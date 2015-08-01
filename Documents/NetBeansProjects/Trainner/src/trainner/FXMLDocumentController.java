@@ -23,12 +23,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
+import org.opencv.contrib.FaceRecognizer;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
@@ -93,6 +94,7 @@ public class FXMLDocumentController implements Initializable {
     private CheckBox haarClassifier;
     @FXML
     private CheckBox lbpClassifier;
+    private Rect rect1;
   
 
     @Override
@@ -193,11 +195,13 @@ public class FXMLDocumentController implements Initializable {
                     Mat grayFrame = new Mat();
 
                     // convert the frame in gray scale
-                    Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2YUV_I420);
+                    Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
+                   
                     // equalize the frame histogram to improve the result
-                    Imgproc.equalizeHist(grayFrame, grayFrame);
+                   Imgproc.equalizeHist(grayFrame, grayFrame);
                     // convert the Mat object (OpenCV) to Image (JavaFX)
                     this.detectAndDisplay(frame);
+                  //  Imgproc.equalizeHist(frame, frame);
                     imageToShow = mat2Image(frame);
                     boolean file = new File(user.getTainingDir()).mkdir();
                     
@@ -255,12 +259,17 @@ public class FXMLDocumentController implements Initializable {
         
         
          */
-        Mat Test = null;
-        equalizeHist(frame,Test);
+        //Mat Test = null;
+//        equalizeHist(frame,Test);
         System.out.println(frame.toString());
         if(user.getTainingCount()==0)
             Dialogs.create().message("This is the last alocated Slot for a Face").showInformation();
-        Highgui.imwrite(user.getTainingDir() + "/" + user.getUserId() + "_" + user.getTainingCount() + ".jpg", imFrame);
+        // Croping the image before storing
+                    Rect rect_crop = new Rect(rect1.x, rect1.y, rect1.width, rect1.height);
+                    Mat image_roi= new Mat(imFrame,rect_crop);
+                    //Highgui.imwrite("image.jpg", image_roi);
+        
+        Highgui.imwrite(user.getTainingDir() + "/" + user.getUserId() + "_" + user.getTainingCount() + ".jpg", image_roi);
         String location =user.getTainingDir() + "/" + user.getUserId() + "_" + user.getTainingCount();
         user.saveToDb(location,user.getUserId());
         amount = user.getTainingCount() - 1;
@@ -308,15 +317,24 @@ public class FXMLDocumentController implements Initializable {
 		}
 		
 		// detect faces
-		this.faceCascade.detectMultiScale(grayFrame, faces, 1.1f, 4, 0 | Objdetect.CASCADE_SCALE_IMAGE, new Size(
-				20, 20), new Size());
+		this.faceCascade.detectMultiScale(grayFrame, faces, 1.1, 3, 0 | Objdetect.CASCADE_SCALE_IMAGE, new Size(
+				this.absoluteFaceSize, this.absoluteFaceSize), new Size());
 		
 		// each rectangle in faces is a face
 		Rect[] facesArray = faces.toArray();
-		for (int i = 0; i < facesArray.length; i++){
-			Core.rectangle(frames, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0, 255), 3);
-                           //Imgproc.equalizeHist(frames, frames);
-                }
+                Rect rect_crop=null;
+             
+                for (Rect rect : facesArray) {
+                    rect1=rect;
+                    Core.rectangle(frames, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
+                    new Scalar(0, 255, 0));
+                    
+}
+//		for (int i = 0; i < facesArray.length; i++){
+//			Core.rectangle(frames, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0, 255), 3);
+//                           //Imgproc.equalizeHist(frames, frames);
+//                        rect_crop= new Rect(facesArray[i].height, i, i, i)
+//                }
 //Mat faceImg = cameraImg(facesArray[0]);
               
 	}       
@@ -368,6 +386,10 @@ public class FXMLDocumentController implements Initializable {
      timer=null;
      
     
+    }
+
+    private FaceRecognizer createEigenFaceRecognizer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	
 }
