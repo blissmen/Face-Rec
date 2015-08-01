@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="1060.0" style="-fx-background-color: #182334;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.Ca_viewController">
+   <children>
+      <Label layoutX="238.0" layoutY="51.0" prefHeight="98.0" prefWidth="312.0" text="Camara View " textFill="#f5efef">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="472.0" fitWidth="594.0" layoutX="80.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</Pane>
