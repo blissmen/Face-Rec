@@ -6,6 +6,7 @@
 package facialsystem;
 
 import General.DatabaseHelper;
+import General.ScreensController;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
@@ -59,13 +60,21 @@ public class FXMLDocumentController implements Initializable {
     private String Course_id;
     private String Course_Name;
     private String query;
-
+    private static ScreensController mainScreen;
+    public static String Screen_ID="Ca_view";
+    public static String Screen_FXM="/facialsystem/Ca_view.fxml";
+    public static String Screen2_ID ="teacherInfo";
+    public static String Screen2_FXML ="/facialsystem/teacherInfo.fxml";
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        mainScreen = new ScreensController(Tab);
         database = new DatabaseHelper();
+         mainScreen.loadScreen(Screen2_ID, Screen2_FXML);
+        mainScreen.loadScreen(Screen_ID, Screen_FXM);
+       mainScreen.setScreen(Screen2_ID);
     }
 
     @FXML
