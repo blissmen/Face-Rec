@@ -5,6 +5,7 @@
  */
 package facialsystem;
 
+import General.ControlledScreen;
 import General.DatabaseHelper;
 import General.ScreensController;
 import java.net.URL;
@@ -28,31 +29,15 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author USER
  */
-public class FXMLDocumentController implements Initializable {
-    DatabaseHelper database;
+public class FXMLDocumentController implements Initializable,ControlledScreen {
     @FXML
     private Label label;
     @FXML
     private AnchorPane Tab;
-    @FXML
-    private TextField name;
-    @FXML
     private TextField id;
-    @FXML
     private TextField st;
-    @FXML
     private ComboBox<?> CC;
-    @FXML
     private TextField ET;
-    @FXML
-    private ImageView T_img;
-    @FXML
-    private Label greet_txt;
-    @FXML
-    private Button en_cl;
-    @FXML
-    private Button class_lst;
-    @FXML
     private TextField CN;
     private String lect_id;
     private String Start_time;
@@ -65,6 +50,15 @@ public class FXMLDocumentController implements Initializable {
     public static String Screen_FXM="/facialsystem/Ca_view.fxml";
     public static String Screen2_ID ="teacherInfo";
     public static String Screen2_FXML ="/facialsystem/teacherInfo.fxml";
+    public static String Screen3_ID ="settings";
+    public static String Screen3_FXML ="/facialsystem/settings.fxml";
+    @FXML
+    private Button CaButton;
+    @FXML
+    private Button set;
+    @FXML
+    private Button register;
+    private DatabaseHelper database;
     /**
      * Initializes the controller class.
      */
@@ -72,35 +66,62 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         mainScreen = new ScreensController(Tab);
         database = new DatabaseHelper();
-         mainScreen.loadScreen(Screen2_ID, Screen2_FXML);
+        mainScreen.loadScreen(Screen2_ID, Screen2_FXML);
         mainScreen.loadScreen(Screen_ID, Screen_FXM);
-       mainScreen.setScreen(Screen2_ID);
-    }
+        mainScreen.setScreen(Screen2_ID);
+        mainScreen.loadScreen(Screen3_ID, Screen3_FXML);
+       }
 
-    @FXML
     private void EndClass(ActionEvent event) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
         Date dt = new Date(cal.getTime().getTime());
         System.out.println(dt.toString());
         //System.out.println(cal.getTime().toString());
-        lect_id= id.getText();
-        Start_time=st.getText();
-        End_time=ET.getText();
-        Course_id= CC.getSelectionModel().getSelectedItem().toString();
-        Course_Name = CN.getText();
-        saveClass(lect_id,dt.toString()+" "+Start_time,dt.toString()+" "+End_time,Course_id,Course_Name);
+        Class.setID( id.getText());
+        Class.setStartTime(st.getText());
+        Class.setCOURSEName(CN.getText());
+        Class.setEndTime(ET.getText());
+        Class.setCOURSE(CC.getSelectionModel().getSelectedItem().toString());
+        saveClass();
+        id.setText("");
+        st.setText("");
+        ET.setText("");
+        CC.getSelectionModel().clearSelection();
+        CN.setText("");
         
         
+    }
+
+
+    private void saveClass() {
+       Class.setCOURSE(Course_id);
+       Class.setID(lect_id);
         
+        
+        query="insert into `Class registration`(Lecturer_ID,Start_Time,End_Time,Course_ID,Course_Name) values ('"+Class.getID()+"','"+Class.getStartTime()+"','"+Class.getEndTime()+"','"+Class.getCOURSE()+"','"+Class.getCOURSEName()+"')";
+       database.Query(query);
     }
 
     @FXML
-    private void viewList(ActionEvent event) {
+    private void loadCamera(ActionEvent event) {
+    mainScreen.setScreen(Screen_ID);
+    
     }
 
-    private void saveClass(String lect_id, String Start_time, String End_time, String Course_id, String Course_Name) {
-       query="insert into `Class registration`(Lecturer_ID,Start_Time,End_Time,Course_ID,Course_Name) values ('"+lect_id+"','"+Start_time+"','"+End_time+"','"+Course_id+"','"+Course_Name+"')";
-       database.Query(query);
+    @FXML
+    private void settings(ActionEvent event) {
+       mainScreen.setScreen(Screen3_ID);
+    }
+
+    @FXML
+    private void RegisterClass(ActionEvent event) {
+        mainScreen.setScreen(Screen2_ID);
+    }
+
+    @Override
+    public void setScreenParent(ScreensController pane) {
+        
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

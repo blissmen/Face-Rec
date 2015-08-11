@@ -1,4 +1,4 @@
-#include <jni.h>
+#include <C:\Program Files\Java\jdk1.8.0_20\include\jni.h>
 #include "C:/opencv/build/include/opencv2/contrib/contrib.hpp"
 
 

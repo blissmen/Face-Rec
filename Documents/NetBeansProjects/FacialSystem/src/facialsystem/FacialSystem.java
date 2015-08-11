@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.opencv.core.Core;
 
 /**
  *
@@ -19,7 +20,7 @@ public class FacialSystem extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -31,8 +32,8 @@ public class FacialSystem extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Recognizer recognise = new Recognizer();
-       Recognizer.main();
+
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         launch(args);
     }
     
