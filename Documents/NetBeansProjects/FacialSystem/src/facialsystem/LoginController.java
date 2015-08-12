@@ -12,7 +12,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -23,13 +25,15 @@ import javafx.scene.layout.AnchorPane;
 public class LoginController implements Initializable {
     @FXML
     private AnchorPane login;
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField passwd;
     private static ScreensController logScreen;
     public static String interface_ID="FXMLDocument";
     public static String interface_FXML="/facialsystem/FXMLDocument.fxml";
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField password;
+    @FXML
+    private Button logingbtn;
     /**
      * Initializes the controller class.
      * @param url
@@ -44,10 +48,17 @@ public class LoginController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void validateCreds(ActionEvent event) {
        logScreen.setScreen(interface_ID);
         
+    }
+
+    @FXML
+    private void verifyCreds(ActionEvent event) {
+    }
+
+    @FXML
+    private void verifyCreds(MouseEvent event) {
     }
     
 }
