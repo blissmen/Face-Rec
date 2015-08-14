@@ -8,11 +8,16 @@ package facialsystem;
 import General.DatabaseHelper;
 import General.ScreensController;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -34,6 +39,9 @@ public class LoginController implements Initializable {
     private TextField password;
     @FXML
     private Button logingbtn;
+    private DatabaseHelper database;
+    @FXML
+    private Label status;
     /**
      * Initializes the controller class.
      * @param url
@@ -41,24 +49,35 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DatabaseHelper database  = new DatabaseHelper();
+         database  = new DatabaseHelper();
     logScreen = new ScreensController(login);
     logScreen.loadScreen(interface_ID, interface_FXML);
     
         // TODO
     }    
-
-    private void validateCreds(ActionEvent event) {
-       logScreen.setScreen(interface_ID);
-        
-    }
-
-    @FXML
-    private void verifyCreds(ActionEvent event) {
-    }
-
+    
     @FXML
     private void verifyCreds(MouseEvent event) {
+        
+    String name = username.getText().trim().replace("'", "\'");
+    String pass  = password.getText();
+    String query ="select * from Account where Matricule= '"+name+"' and password='"+pass+"'";
+        try {
+            ArrayList res = database.ExecuteQuery(query);
+            if(res.size()<2)
+                status.setVisible(true);
+            else
+            {
+                
+                General.GeneralFunctions.FetchData(name);
+               logScreen.setScreen(interface_ID);
+               TeacherInfoController.teach.Populate();
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
+   
 }

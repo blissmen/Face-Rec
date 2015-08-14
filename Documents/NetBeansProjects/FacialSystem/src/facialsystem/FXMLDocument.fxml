@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="821.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Pane layoutY="-2.0" prefHeight="175.0" prefWidth="1301.0" style="-fx-background-color: #1f2d40; -fx-border-color: #273a58;">
@@ -31,7 +31,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="-5.0" layoutY="173.0" prefHeight="664.0" prefWidth="248.0" style="-fx-background-color: #142135; -fx-border-color: #273a58;">
+      <Pane layoutX="-5.0" layoutY="173.0" prefHeight="411.0" prefWidth="248.0" style="-fx-background-color: #142135; -fx-border-color: #273a58;">
          <children>
             <Button id="button1" fx:id="register" layoutX="-1.0" layoutY="31.0" mnemonicParsing="false" onAction="#RegisterClass" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Register a Class">
                <textFill>
@@ -57,6 +57,6 @@
                </font>
             </Button>
          </children></Pane>
-      <AnchorPane fx:id="Tab" layoutX="233.0" layoutY="173.0" prefHeight="664.0" prefWidth="1068.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0" />
+      <AnchorPane fx:id="Tab" layoutX="233.0" layoutY="173.0" prefHeight="411.0" prefWidth="1068.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0" />
     </children>
 </AnchorPane>

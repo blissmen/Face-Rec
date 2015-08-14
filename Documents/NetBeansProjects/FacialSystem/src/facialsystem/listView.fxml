@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="1068.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.ListViewController">
+    <stylesheets>
+        <URL value="@listview.css" />
+        
+    </stylesheets>
+   <children>
+      <Pane prefHeight="465.0" prefWidth="1068.0" style="-fx-background-radius: 12;">
+         <children>
+            <TableView fx:id="listTable" editable="true" layoutX="95.0" layoutY="64.0" prefHeight="310.0" prefWidth="920.0" style="-fx-background-radius: 12;" tableMenuButtonVisible="true">
+              <columns>
+                <TableColumn prefWidth="266.0" text="Name" />
+                <TableColumn prefWidth="137.0" text="Matricule" />
+                  <TableColumn prefWidth="160.0" text="Start time" />
+                  <TableColumn prefWidth="171.0" text="End Time" />
+                  <TableColumn prefWidth="128.0" text="Corse Code" />
+              </columns>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </TableView>
+            <TextField fx:id="courseCode" layoutX="152.0" layoutY="14.0" prefHeight="24.0" prefWidth="206.0" promptText="Enter Course Name" />
+            <Button fx:id="submitBtn" layoutX="562.0" mnemonicParsing="false" onAction="#getList" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #1111; -fx-background-radius: 12;" text="Get">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.23333333333333334" startY="0.23333333333333334">
+                     <stops>
+                        <Stop color="#e84c4c" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <DatePicker fx:id="date" editable="false" layoutX="369.0" layoutY="15.0" promptText="Date" />
+            <Button fx:id="print" layoutX="612.0" layoutY="386.0" mnemonicParsing="false" onAction="#printList" prefHeight="62.0" prefWidth="184.0" style="-fx-background-color: #182334; -fx-background-radius: 12;" text="print">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.40476190476190477" startY="0.47619047619047616">
+                     <stops>
+                        <Stop color="#b99797" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+    
+</AnchorPane>

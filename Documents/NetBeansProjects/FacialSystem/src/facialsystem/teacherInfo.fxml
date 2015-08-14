@@ -6,33 +6,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.TeacherInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.TeacherInfoController">
    <children>
-      <Pane layoutY="-2.0" prefHeight="681.0" prefWidth="1068.0" style="-fx-background-color: #182334; -fx-border-color: #273a58;">
+      <Pane layoutY="-2.0" prefHeight="411.0" prefWidth="1068.0" style="-fx-background-color: #182334; -fx-border-color: #273a58;">
          <children>
-            <TextField fx:id="name" layoutX="80.0" layoutY="120.0" promptText="Teacher Name" />
-            <TextField fx:id="id" layoutX="80.0" layoutY="189.0" promptText="Teacher ID" />
-            <TextField fx:id="st" layoutX="80.0" layoutY="277.0" promptText="StartTime: e.g 13:00:00" />
-            <ComboBox editable="true" layoutX="325.0" layoutY="120.0" prefWidth="150.0" promptText="Level" />
-            <ComboBox fx:id="CC" editable="true" layoutX="325.0" layoutY="164.0" prefWidth="150.0" promptText="CurseCode" />
-            <TextField fx:id="ET" layoutX="326.0" layoutY="277.0" promptText="End Time: e.g 15:00" />
+            <TextField fx:id="fullname" editable="false" layoutX="80.0" layoutY="120.0" promptText="Teacher Name" style="-fx-background-radius: 8;" />
+            <TextField fx:id="id" layoutX="80.0" layoutY="189.0" promptText="Teacher ID" style="-fx-background-radius: 8;" />
+            <TextField fx:id="st" layoutX="80.0" layoutY="277.0" promptText="StartTime: e.g 13:00:00" style="-fx-background-radius: 8;" />
+            <ComboBox fx:id="levels" editable="true" layoutX="325.0" layoutY="120.0" prefWidth="150.0" promptText="Level" style="-fx-background-radius: 8;" />
+            <ComboBox fx:id="CC" editable="true" layoutX="325.0" layoutY="164.0" onAction="#getCN" prefWidth="150.0" promptText="CurseCode" style="-fx-background-radius: 8;" />
+            <TextField fx:id="ET" layoutX="326.0" layoutY="277.0" promptText="End Time: e.g 15:00" style="-fx-background-radius: 8;" />
             <ImageView fx:id="T_img" fitHeight="207.0" fitWidth="299.0" layoutX="609.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="greet_txt" layoutX="146.0" layoutY="25.0" prefHeight="57.0" prefWidth="351.0" text="Good Day Mr John Doe" textFill="#f5f2f2">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
-            <Button id="button1" fx:id="en_cl" layoutX="432.0" layoutY="429.0" mnemonicParsing="false" onAction="#EndClass" prefHeight="63.0" prefWidth="177.0" stylesheets="@../style.css" text="End Class" textFill="#f2ecec">
+            <Button id="button1" fx:id="en_cl" layoutX="439.0" layoutY="325.0" mnemonicParsing="false" onAction="#EndClass" prefHeight="63.0" prefWidth="177.0" style="-fx-background-radius: 12;" stylesheets="@../style.css" text="End Class" textFill="#f2ecec">
                <font>
                   <Font size="29.0" />
                </font>
             </Button>
-            <Button id="button1" fx:id="class_lst" layoutX="103.0" layoutY="435.0" mnemonicParsing="false" onAction="#viewList" prefHeight="64.0" prefWidth="255.0" stylesheets="@../style.css" text="View  Class List" textFill="#f5f2f2">
+            <Button id="button1" fx:id="class_lst" layoutX="80.0" layoutY="326.0" mnemonicParsing="false" onAction="#viewList" prefHeight="64.0" prefWidth="255.0" style="-fx-background-radius: 12;" stylesheets="@../style.css" text="View  Class List" textFill="#f5f2f2">
                <font>
                   <Font name="Calibri" size="33.0" />
                </font>
             </Button>
-            <TextField fx:id="CN" layoutX="326.0" layoutY="212.0" prefHeight="25.0" prefWidth="318.0" promptText="Course Name" />
+            <TextField fx:id="CN" layoutX="326.0" layoutY="212.0" prefHeight="25.0" prefWidth="318.0" promptText="Course Name" style="-fx-background-radius: 8;" />
          </children>
       </Pane>
    </children>

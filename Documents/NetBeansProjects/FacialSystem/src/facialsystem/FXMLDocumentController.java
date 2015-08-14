@@ -47,7 +47,9 @@ public class FXMLDocumentController implements Initializable,ControlledScreen {
     private String query;
     private static ScreensController mainScreen;
     public static String Screen_ID="Ca_view";
-    public static String Screen_FXM="/facialsystem/Ca_view.fxml";
+    public static String Screen_FXML="/facialsystem/Ca_view.fxml";
+    public static String Screen4_ID="listView";
+    public static String Screen4_FXML="/facialsystem/listView.fxml";
     public static String Screen2_ID ="teacherInfo";
     public static String Screen2_FXML ="/facialsystem/teacherInfo.fxml";
     public static String Screen3_ID ="settings";
@@ -67,11 +69,16 @@ public class FXMLDocumentController implements Initializable,ControlledScreen {
         mainScreen = new ScreensController(Tab);
         database = new DatabaseHelper();
         mainScreen.loadScreen(Screen2_ID, Screen2_FXML);
-        mainScreen.loadScreen(Screen_ID, Screen_FXM);
+        mainScreen.loadScreen(Screen_ID, Screen_FXML);
         mainScreen.setScreen(Screen2_ID);
         mainScreen.loadScreen(Screen3_ID, Screen3_FXML);
+        mainScreen.loadScreen(Screen4_ID, Screen4_FXML);
        }
-
+    public static void loadListView(String Course)
+            {
+            mainScreen.setScreen(Screen4_ID);
+            
+            }
     private void EndClass(ActionEvent event) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
         Date dt = new Date(cal.getTime().getTime());

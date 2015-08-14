@@ -5,6 +5,11 @@
  */
 package General;
 
+import facialsystem.User;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.input.KeyEvent;
 import org.controlsfx.dialog.Dialogs;
 import org.jetbrains.annotations.NotNull;
@@ -13,6 +18,8 @@ import org.jetbrains.annotations.NotNull;
  * @author Harvey
  */
 public class GeneralFunctions {
+    private static DatabaseHelper database;
+    private static String query;
 
     @NotNull
     public static String toSentenceCase(@NotNull String string) {
@@ -39,4 +46,26 @@ public class GeneralFunctions {
         }
     }
 
+    public static void FetchData(String name) {
+        try {
+              database = new DatabaseHelper();
+             query ="select * from lecturer where Account_Matricule='"+name+"'";
+            ArrayList re = database.ExecuteQuery(query);
+            User.setFirst_Name(re.get(1).toString());
+            User.setLast_Name(re.get(2).toString());
+            User.setMatricule(name);
+            User.setQualification(re.get(3).toString());
+            User.setSpeciality(re.get(4).toString());
+            User.setTelephone(re.get(5).toString());
+            query="select Course_Course_ID from account_has_course where Account_Matricule='"+name+"'";
+            ArrayList Courses = database.ExecuteQuery(query);
+            User.setCourses(Courses);
+        } catch (SQLException ex) {
+            Logger.getLogger(GeneralFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        
+    }
+
+    
 }

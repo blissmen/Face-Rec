@@ -6,13 +6,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="821.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.SettingsController">
    <children>
       <TitledPane animated="false" layoutX="-3.0" layoutY="-2.0" prefHeight="821.0" prefWidth="1301.0" text="SETTINGS">
          <content>
-            <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="121.0">
+            <SplitPane dividerPositions="0.5" prefHeight="555.0" prefWidth="1248.0">
               <items>
-                <AnchorPane fx:id="pane1" minHeight="0.0" minWidth="0.0" prefHeight="821.0" prefWidth="651.0">
+                <AnchorPane fx:id="pane1" minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="642.0">
                      <children>
                         <Separator layoutY="73.0" prefHeight="3.0" prefWidth="651.0" />
                      </children>
