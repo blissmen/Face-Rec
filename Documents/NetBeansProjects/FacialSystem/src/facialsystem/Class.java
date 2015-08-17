@@ -5,16 +5,28 @@
  */
 package facialsystem;
 
+import java.sql.Date;
+
 /**
  *
  * @author USER
  */
 public class Class {
-   static String ID;
+   static int ID;
+   static Date date;
    static String COURSE;
    static String COURSEName;
    static String startTime;
    static String endTime;
+   
+    public static Date getDate() {
+        return date;
+    }
+
+    public static void setDate(Date date) {
+        Class.date = date;
+    }
+   
 
     public static String getCOURSEName() {
         return COURSEName;
@@ -39,11 +51,11 @@ public class Class {
     public static void setEndTime(String endTime) {
         Class.endTime = endTime;
     }
-    public static String getID() {
+    public static int getID() {
         return ID;
     }
 
-    public static void setID(String IDT) {
+    public static void setID(int IDT) {
         ID = IDT;
     }
 
@@ -53,5 +65,19 @@ public class Class {
 
     public static  void setCOURSE(String COURSET) {
         COURSE = COURSET;
+    }
+    public void SaveClass()
+    {
+    String query = "Insert into `class registration`(ID,Lecturer_ID,Start_Time,End_Time,Course_ID,Course_Name,ClassDate) values ("
+                + ID + ""
+                + ",'" + User.getMatricule() + ""
+                + "','" +startTime+ ""
+                + "','" +endTime+ ""
+                + "','" + COURSE + ""
+                + "','" + COURSEName + ""
+                + "','" + date + "')"
+            ;
+ TeacherInfoController.database.Query(query);
+        
     }
 }

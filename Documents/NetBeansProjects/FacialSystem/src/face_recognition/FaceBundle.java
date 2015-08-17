@@ -238,7 +238,7 @@ public class FaceBundle implements Serializable, Comparable {
         temp = 0.0;
         for (j = 0; j < MAGIC_NR; j++) {
           distance[j] = Math.abs(input_wk[j] - wk[image][j]);
-          //System.out.print(distance[j]+"\t");
+          System.out.print(distance[j]+"\t");
         }
         //System.out.println();
         if (image == 0)

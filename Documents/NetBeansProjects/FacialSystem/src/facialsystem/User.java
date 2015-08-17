@@ -13,12 +13,35 @@ import java.util.ArrayList;
  */
 public class User {
     static String Matricule;
-    static String First_Name;
+    static String CurrentCourse;
+    static int ClasID;
+     static String First_Name;
     static String Qualification;
     static String Speciality;
     static String Telephone;
-    static ArrayList Courses;
+    static ArrayList Courses = new ArrayList();
     static ArrayList Levels;
+    public static int getClasID() {
+        return ClasID;
+    }
+
+    public static void setClasID(int ClasID) {
+        User.ClasID = ClasID;
+        Class.setID(ClasID);
+    }
+    public static String getCurrentCourse() {
+        return CurrentCourse;
+    }
+
+    public static void setCurrentCourse(String CurrentCourse) {
+        Class.setCOURSEName(CurrentCourse);
+        User.CurrentCourse = CurrentCourse;
+    }
+
+    public static void setID(int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
     
     public User() {
     }

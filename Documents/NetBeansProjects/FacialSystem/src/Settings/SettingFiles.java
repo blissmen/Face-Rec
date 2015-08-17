@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package facialsystem;
+package Settings;
 
 /**
  *
  * @author USER
  */
 public class SettingFiles {
-    static String FaceDir="";
+    static String FaceDir="C:\\Users\\USER\\Documents\\NetBeansProjects\\Trainner\\Trainning_Set";
+       
 
     public static String getFaceDir() {
         return FaceDir;

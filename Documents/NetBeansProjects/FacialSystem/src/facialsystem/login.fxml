@@ -149,7 +149,7 @@
                         </LinearGradient>
                      </textFill>
                   </Label>
-                  <VBox alignment="CENTER_LEFT" layoutX="391.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="207.0" prefWidth="112.0" translateX="1.0">
+                  <VBox alignment="CENTER_LEFT" layoutX="396.0" layoutY="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="207.0" prefWidth="112.0" translateX="1.0">
                      <children>
                         <Label prefHeight="55.0" prefWidth="112.0" text="User Name:" translateX="1.0">
                            <textFill>
@@ -169,7 +169,7 @@
                               <Font size="23.0" />
                            </font>
                            <textFill>
-                              <LinearGradient endX="1.0" endY="1.0" startX="0.22857142857142854" startY="0.4095238095238095">
+                              <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.22857142857142854" startY="0.4095238095238095">
                                  <stops>
                                     <Stop color="#ab8989" />
                                     <Stop color="WHITE" offset="1.0" />
@@ -180,21 +180,53 @@
                               <Blend />
                            </effect>
                         </Label>
+                        <Label prefHeight="44.0" prefWidth="111.0" text="COURSE:">
+                           <textFill>
+                              <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="0.4476190476190476" startY="0.4095238095238095">
+                                 <stops>
+                                    <Stop color="#ab8989" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
-                  <TextField fx:id="username" layoutX="560.0" layoutY="77.0" prefHeight="35.0" prefWidth="223.0" promptText="Username" translateX="1.0" />
-                  <TextField fx:id="password" layoutX="557.0" layoutY="134.0" prefHeight="35.0" prefWidth="223.0" promptText="Password" translateX="1.0" />
-                  <Button fx:id="logingbtn" layoutX="428.0" layoutY="239.0" mnemonicParsing="false" onMouseClicked="#verifyCreds" prefHeight="77.0" prefWidth="338.0" text="LOGIN" textFill="#494f55" translateX="1.0" />
-                  <ImageView fitHeight="83.0" fitWidth="344.0" layoutX="427.0" layoutY="239.0" onMouseClicked="#verifyCreds" pickOnBounds="true" preserveRatio="true" translateX="1.0">
-                     <image>
-                        <Image url="@Dependency/log.png" />
-                     </image>
-                  </ImageView>
+                  <TextField fx:id="username" layoutX="560.0" layoutY="77.0" prefHeight="35.0" prefWidth="223.0" promptText="Username" style="-fx-background-radius: 12;" translateX="1.0" />
+                  <TextField fx:id="password" layoutX="557.0" layoutY="134.0" prefHeight="35.0" prefWidth="223.0" promptText="Password" style="-fx-background-radius: 12;" translateX="1.0" />
                   <Label fx:id="status" layoutX="345.0" layoutY="12.0" prefHeight="35.0" prefWidth="413.0" text="Failed to Verify password and/Or Username" textFill="#da5757" translateX="1.0" visible="false">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="145.0" fitWidth="472.0" focusTraversable="true" layoutX="601.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@Dependency/bacck.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="145.0" fitWidth="472.0" focusTraversable="true" layoutX="329.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@Dependency/bacck.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="logingbtn" layoutX="428.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#verifyCreds" prefHeight="77.0" prefWidth="338.0" text="LOGIN" textFill="#494f55" translateX="1.0">
+                     <graphic>
+                        <ImageView fitHeight="83.0" fitWidth="344.0" onMouseClicked="#verifyCreds" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Dependency/log.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <TextField fx:id="InitcourseCode" layoutX="558.0" layoutY="193.0" prefHeight="35.0" prefWidth="223.0" promptText="Course Code" style="-fx-background-radius: 12;" />
                </children>
             </Pane>
          </children>

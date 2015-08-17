@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.SettingsController">
+   <children>
+      <TitledPane animated="false" layoutX="-4.0" layoutY="-3.0" prefHeight="470.0" prefWidth="1306.0" text="SETTINGS">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.14761904761904762">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <content>
+            <SplitPane dividerPositions="0.17638036809815952" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="269.0">
+                     <children>
+                        <Accordion layoutX="2.0" layoutY="2.0" prefHeight="256.0" prefWidth="220.0">
+                          <panes>
+                            <TitledPane animated="false" text="General">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="218.0">
+                                       <children>
+                                          <Button fx:id="GenSet" layoutY="1.0" mnemonicParsing="false" onAction="#genSet" prefHeight="60.0" prefWidth="222.0" text="General Settings" />
+                                          <Button layoutX="-2.0" layoutY="61.0" mnemonicParsing="false" onAction="#CameSets" prefHeight="60.0" prefWidth="222.0" text="Camra Settings" />
+                                          <Button layoutY="120.0" mnemonicParsing="false" onAction="#privacySets" prefHeight="60.0" prefWidth="222.0" text="privacy Settings" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" prefHeight="230.0" prefWidth="220.0" text="Advanced">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="218.0">
+                                       <children>
+                                          <Button layoutX="-2.0" layoutY="-2.0" mnemonicParsing="false" onAction="#advancedSets" prefHeight="60.0" prefWidth="219.0" text="Advanced Settings" />
+                                          <Button layoutX="-1.0" layoutY="58.0" mnemonicParsing="false" onAction="#Notifications" prefHeight="60.0" prefWidth="219.0" text="Notification" />
+                                          <Button layoutX="-1.0" layoutY="118.0" mnemonicParsing="false" onAction="#Connections" prefHeight="63.0" prefWidth="220.0" text="Connnection" />
+                                          <ImageView fitHeight="57.0" fitWidth="71.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="61.0" fitWidth="75.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="61.0" fitWidth="71.0" layoutX="6.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="modanchor" minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="923.0" />
+              </items>
+               <effect>
+                  <Reflection />
+               </effect>
+            </SplitPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

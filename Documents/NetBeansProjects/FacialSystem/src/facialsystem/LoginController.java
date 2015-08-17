@@ -5,6 +5,7 @@
  */
 package facialsystem;
 
+import General.ControlledScreen;
 import General.DatabaseHelper;
 import General.ScreensController;
 import java.net.URL;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -27,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author USER
  */
-public class LoginController implements Initializable {
+public class LoginController implements Initializable,ControlledScreen {
     @FXML
     private AnchorPane login;
     private static ScreensController logScreen;
@@ -42,6 +42,8 @@ public class LoginController implements Initializable {
     private DatabaseHelper database;
     @FXML
     private Label status;
+    @FXML
+    private TextField InitcourseCode;
     /**
      * Initializes the controller class.
      * @param url
@@ -52,6 +54,7 @@ public class LoginController implements Initializable {
          database  = new DatabaseHelper();
     logScreen = new ScreensController(login);
     logScreen.loadScreen(interface_ID, interface_FXML);
+//     logScreen.loadScreen(Sreen5_ID, Sreen5_FXML);
     
         // TODO
     }    
@@ -68,15 +71,25 @@ public class LoginController implements Initializable {
                 status.setVisible(true);
             else
             {
-                
-                General.GeneralFunctions.FetchData(name);
+               General.GeneralFunctions.FetchData(name);
                logScreen.setScreen(interface_ID);
+               General.GeneralFunctions.getCourseClassID(InitcourseCode.getText());
+               General.GeneralFunctions.getCourseName(InitcourseCode.getText());
                TeacherInfoController.teach.Populate();
-            
+               User.setCurrentCourse(InitcourseCode.getText());
+               
+               
+               
+              
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void setScreenParent(ScreensController pane) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

@@ -6,17 +6,13 @@
 package facialsystem;
 
 
+import Settings.SettingFiles;
 import face_recognition.EigenFaceCreator;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
-import java.io.IOException;
-
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.opencv.core.Mat;
-import org.opencv.highgui.Highgui;
 
 /**
  *
@@ -41,16 +37,15 @@ public class Recognizer{
            
     public static String predict(String testFace)
     {
-               String matricule ="";
+               String matricule =""; 
                
            try {
                 EigenFaceCreator creator = new EigenFaceCreator();
-                System.out.println("Constructing face-spaces from "+SettingFiles.getFaceDir()+"C.....");
+                System.out.println("Constructing face-spaces from "+SettingFiles.getFaceDir()+" .....");
                 creator.readFaceBundles(SettingFiles.getFaceDir());
                 System.out.println(" Identified with Distance "+creator.DISTANCE);
                 matricule=creator.checkAgainst(testFace);
-               
-               
+             
                
            } catch (Exception ex) {
                Logger.getLogger(Recognizer.class.getName()).log(Level.SEVERE, null, ex);

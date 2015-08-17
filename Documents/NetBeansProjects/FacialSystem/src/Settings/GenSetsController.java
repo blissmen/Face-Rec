@@ -3,39 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package facialsystem;
+package Settings;
 
 import General.ControlledScreen;
 import General.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
 
 /**
  * FXML Controller class
  *
  * @author USER
  */
-public class SettingsController implements Initializable,ControlledScreen {
+public class GenSetsController implements Initializable, ControlledScreen {
     @FXML
-    private AnchorPane pane1;
+    private CheckBox saingav;
     @FXML
-    private AnchorPane pane2;
+    private Hyperlink changeD;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
+        // TODO
     }    
+
+    @FXML
+    private void Changepic(ActionEvent event) {
+    }
 
     @Override
     public void setScreenParent(ScreensController pane) {
-     
-        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

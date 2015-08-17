@@ -91,7 +91,7 @@ public class EigenFaceCreator {
    */
   public void readFaceBundles(String n) throws FileNotFoundException,
     IOException,  IllegalArgumentException, ClassNotFoundException {
-
+    System.out.println(n);
     root_dir = new File(n);
 
     File[] files= root_dir.listFiles(new ImageFilter());
@@ -147,10 +147,13 @@ public class EigenFaceCreator {
     int i =0;
     String name = "cache";
     // The names are all sorted, we presume.
-      System.out.println(""+files[i].toString());
-    for (i = 0; i < 2; i++) {
-      name = name + files[i].substring(0,8); // Construct the cache name
-        System.out.println(name);
+     
+    for (String filename: files) {
+        System.out.println(i);
+        i++;
+       
+      name = name + filename.substring(0,filename.length()-4); // Construct the cache name
+//        System.out.println(name);
     }
     // Check to see if a FaceBundle cache has been saved.
 
@@ -230,8 +233,7 @@ public class EigenFaceCreator {
     int height = 0;
     int i = 0;
 
-    for (i = 0; i < 2; i++) {
-         System.out.println(files.length);
+    for (i = 0; i < files.length; i++) {
       temp = id[i].toLowerCase();
       temp = temp.substring(temp.lastIndexOf('.')+1,temp.length());
       if (temp.equals("jpg") || temp.equals("jpeg"))  file = new JPGFile(dir+id[i]);
@@ -251,10 +253,10 @@ public class EigenFaceCreator {
 
     // Then construct our big double[][] array - MxN^2
     double[][] face_v = new double[MAGIC_SETNR][width*height];
-    //System.out.println("Generating bundle of ("+face_v.length+" x "+face_v[0].length+"), h:"+height+" w:"+width);
+     System.out.println("Generating bundle of ("+face_v.length+" x "+face_v[0].length+"), h:"+height+" w:"+width);
 
-    for (i = 0; i < 2; i++) {
-        //System.arraycopy(files[i].getDouble(),0,face_v[i],0,face_v[i].length);
+    for (i = 0; i < files.length; i++) {
+        System.arraycopy(files[i].getDouble(),0,face_v[i],0,face_v[i].length);
         System.out.println(files.length);
         face_v[i] = files[i].getDouble();
     }
