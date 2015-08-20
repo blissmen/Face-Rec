@@ -5,61 +5,119 @@
  */
 package Settings;
 
+import org.opencv.core.Size;
+
 /**
  *
  * @author USER
  */
 public class CameraSettings {
-    static int CamaraID=0;
-    static int frameserSec=33;
-    static String imageOutputFormat="jpg";
+    public int CamaraID=0;
+    public int frameserSec=33;
+    public String imageOutputFormat="jpg";
+    public String CascadesFile="resources/haarcascades/haarcascade_frontalface_alt";
+    public String resolution ;
+    public int imageHeight;
+    public Size  minFeatureSize = new Size(20, 20); 
+     public float searchScaleFactor = 1.1f; // How many sizes to search.
+    public int minNeighbors = 4;
 
-    public static String getImageOutputFormat() {
-        return imageOutputFormat;
+
+    public Size getMinFeatureSize() {
+        return minFeatureSize;
     }
 
-    public static void setImageOutputFormat(String imageOutputFormat) {
-        CameraSettings.imageOutputFormat = imageOutputFormat;
-    }
-    public static int getFrameserSec() {
-        return frameserSec;
+    public void setMinFeatureSize(Size minFeatureSize) {
+        this.minFeatureSize = minFeatureSize;
     }
 
-    public static void setFrameserSec(int frameserSec) {
-        CameraSettings.frameserSec = frameserSec;
+    public float getSearchScaleFactor() {
+        return searchScaleFactor;
     }
-    public static int getCamaraID() {
+
+    public void setSearchScaleFactor(float searchScaleFactor) {
+        this.searchScaleFactor = searchScaleFactor;
+    }
+
+    public int getMinNeighbors() {
+        return minNeighbors;
+    }
+
+    public void setMinNeighbors(int minNeighbors) {
+        this.minNeighbors = minNeighbors;
+    }
+   
+    public int getCamaraID() {
         return CamaraID;
     }
 
-    public static void setCamaraID(int CamaraID) {
-        CameraSettings.CamaraID = CamaraID;
+    public void setCamaraID(int CamaraID) {
+        this.CamaraID = CamaraID;
     }
 
-    public static String getResolution() {
+    public int getFrameserSec() {
+        return frameserSec;
+    }
+
+    public void setFrameserSec(int frameserSec) {
+        this.frameserSec = frameserSec;
+    }
+
+    public String getImageOutputFormat() {
+        return imageOutputFormat;
+    }
+
+    public void setImageOutputFormat(String imageOutputFormat) {
+        this.imageOutputFormat = imageOutputFormat;
+    }
+
+    public String getCascadesFile() {
+        return CascadesFile;
+    }
+
+    public void setCascadesFile(String CascadesFile) {
+        this.CascadesFile = CascadesFile;
+    }
+
+    public  String getResolution() {
         return resolution;
     }
 
-    public static void setResolution(String resolution) {
-        CameraSettings.resolution = resolution;
+    public  void setResolution(String resolution) {
+        this.resolution = resolution;
     }
 
-    public static int getImageHeight() {
+    public  int getImageHeight() {
         return imageHeight;
     }
 
-    public static void setImageHeight(int imageHeight) {
-        CameraSettings.imageHeight = imageHeight;
+    public  void setImageHeight(int imageHeight) {
+        this.imageHeight = imageHeight;
     }
 
-    public static int getImageWidth() {
+    public  int getImageWidth() {
         return imageWidth;
     }
 
-    public static void setImageWidth(int imageWidth) {
-        CameraSettings.imageWidth = imageWidth;
+    public  void setImageWidth(int imageWidth) {
+        this.imageWidth = imageWidth;
     }
-    static String resolution ;
-    static int imageHeight;
-    static int imageWidth;
+    public int imageWidth=800;
+
+    void SelectCascadeFile(String cascadefile) {
+        
+       switch(cascadefile)
+       {
+           case "Haar Classifier":
+               this.setCascadesFile("resources/haarcascades/haarcascade_frontalface_default.xml");
+               break;
+           case "Lbp Classifier":
+               this.setCascadesFile("resources/lbpcascades/lbpcascade_frontalface.xml");
+               break;
+           default:
+               this.setCascadesFile(CascadesFile);
+       }
+        
+        
+    }
 }

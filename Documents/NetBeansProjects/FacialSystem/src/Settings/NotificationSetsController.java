@@ -28,7 +28,6 @@ public class NotificationSetsController implements Initializable,ControlledScree
 
     @Override
     public void setScreenParent(ScreensController pane) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -9,7 +9,10 @@ import General.ControlledScreen;
 import General.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -17,18 +20,29 @@ import javafx.fxml.Initializable;
  * @author USER
  */
 public class ConnectionSetsController implements Initializable,ControlledScreen {
+    @FXML
+    private TextField mobileHost;
+    @FXML
+    private TextField newHost;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
 
     @Override
     public void setScreenParent(ScreensController pane) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   }
+
+    @FXML
+    private void UseMobile(ActionEvent event) {
+    }
+
+    @FXML
+    private void Submit(ActionEvent event) {
     }
     
 }

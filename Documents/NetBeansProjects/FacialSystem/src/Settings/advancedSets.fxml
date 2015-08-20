@@ -1,7 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.AdvancedSetsController" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="867.0" style="-fx-background-color: #243044;" stylesheets="@GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.AdvancedSetsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#243044" height="140.0" layoutX="2.0" opacity="0.21" stroke="BLACK" strokeType="INSIDE" width="289.0" />
+      <Group layoutX="65.0" layoutY="70.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#243044" height="268.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="289.0" />
+      <Label layoutX="15.0" layoutY="149.0" prefHeight="39.0" prefWidth="259.0" text="Change Passwords And create New Users" textFill="#9e2c2c">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox editable="true" layoutX="25.0" layoutY="207.0" prefHeight="32.0" prefWidth="212.0" promptText="Enter Matricule" style="-fx-background-color: 13;" />
+      <TextField layoutX="25.0" layoutY="262.0" prefHeight="25.0" prefWidth="233.0" promptText="Enter Password" />
+      <TextField layoutX="26.0" layoutY="299.0" prefHeight="25.0" prefWidth="233.0" promptText="Re-type Passwords" />
+      <RadioButton layoutX="34.0" layoutY="52.0" mnemonicParsing="false" style="-fx-background-color: onAction=&quot;#Changepic&quot;;" text="Use Biometric Login" textFill="#d7b7b7">
+         <font>
+            <Font size="14.0" />
+         </font></RadioButton>
+      <RadioButton layoutX="34.0" layoutY="95.0" mnemonicParsing="false" text="Use Username and Password to Login" textFill="#f8caca">
+         <font>
+            <Font size="13.0" />
+         </font></RadioButton>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#243044" height="419.0" layoutX="289.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
+      <RadioButton layoutX="367.0" layoutY="95.0" mnemonicParsing="false" text="PCA" textFill="#cdc4c4">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <RadioButton layoutX="367.0" layoutY="135.0" mnemonicParsing="false" text="Eigenfaces" textFill="#cdc4c4">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <RadioButton layoutX="367.0" layoutY="181.0" mnemonicParsing="false" text="SOM" textFill="#cdc4c4">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <RadioButton layoutX="367.0" layoutY="224.0" mnemonicParsing="false" text="Geometric" textFill="#cdc4c4">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <Label layoutX="308.0" layoutY="14.0" prefHeight="31.0" prefWidth="221.0" text="Choose Algorithm" textFill="#a46b6b">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button id="button1" layoutX="363.0" layoutY="316.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="160.0" text="Apply" textFill="#d0cbcb">
+         <font>
+            <Font size="33.0" />
+         </font></Button>
+      <Button id="button1" layoutX="560.0" layoutY="44.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="305.0" text="Backup System" textFill="#eee3e3">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#70767c" height="237.0" layoutX="556.0" layoutY="183.0" stroke="BLACK" strokeType="INSIDE" width="312.0" />
+      <ComboBox editable="true" layoutX="562.0" layoutY="227.0" prefHeight="47.0" prefWidth="247.0" promptText="Select Backup Date" />
+      <Button id="button1" layoutX="562.0" layoutY="300.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="305.0" text="Restore" textFill="#eed3d3">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Button id="button1" layoutX="121.0" layoutY="344.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="138.0" text="Validate" textFill="#fcf0f0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

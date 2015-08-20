@@ -44,7 +44,7 @@ public class EigenFaceCreator {
    * This determines if caching of face-spaces should be activated.
    * Anything above zero means yes. Anything else means no.
    */
-  public int USE_CACHE = 1;
+  public int USE_CACHE = 0;
   /**
    * Match against the given file.
    *
@@ -58,18 +58,22 @@ public class EigenFaceCreator {
       double small = Double.MAX_VALUE;
       int idx = -1;
       double[] img = readImage(f);
-
+       
       for (int i = 0; i < b.length; i++) {
+           System.out.println("B = "+b[i]+" img= " + img.toString());
         b[i].submitFace(img);
+        
         if (small > b[i].distance() ) {
            small = b[i].distance();
             idx = i;
         }
       }
       DISTANCE = small;
-      if (small < THRESHOLD)
+      if (small < THRESHOLD+1)
         id = b[idx].getID();
+     
     }
+     
     return id;
   }
 
@@ -91,14 +95,14 @@ public class EigenFaceCreator {
    */
   public void readFaceBundles(String n) throws FileNotFoundException,
     IOException,  IllegalArgumentException, ClassNotFoundException {
-    System.out.println(n);
+
     root_dir = new File(n);
 
     File[] files= root_dir.listFiles(new ImageFilter());
     Vector filenames = new Vector();
 
     String[] set = new String[MAGIC_SETNR];
-    System.out.println(files.length);
+
     int i= 0;
 
     // Sort the list of filenames.
@@ -108,13 +112,13 @@ public class EigenFaceCreator {
     Collections.sort((List)filenames);
 
     b = new FaceBundle[(files.length / MAGIC_SETNR)+1];
-
+      System.out.println("b = "+b.toString());
     // Read each set of 16 images.
     for (i = 0; i < b.length; i++) {
       for (int j = 0; j < MAGIC_SETNR;j++) {
         if (filenames.size() > j+MAGIC_SETNR*i) {
           set[j] = (String)filenames.get(j+MAGIC_SETNR*i);
-          //System.out.println(" - "+set[j]);
+          System.out.println(" - "+set[j]);
         }
       }
       b[i] = submitSet(root_dir.getAbsolutePath() + "/",set);
@@ -147,13 +151,9 @@ public class EigenFaceCreator {
     int i =0;
     String name = "cache";
     // The names are all sorted, we presume.
-     
-    for (String filename: files) {
-        System.out.println(i);
-        i++;
-       
-      name = name + filename.substring(0,filename.length()-4); // Construct the cache name
-//        System.out.println(name);
+
+    for (i = 0; i < files.length; i++) {
+      name = name + files[i].substring(0,files[i].indexOf('.')); // Construct the cache name
     }
     // Check to see if a FaceBundle cache has been saved.
 
@@ -253,11 +253,10 @@ public class EigenFaceCreator {
 
     // Then construct our big double[][] array - MxN^2
     double[][] face_v = new double[MAGIC_SETNR][width*height];
-     System.out.println("Generating bundle of ("+face_v.length+" x "+face_v[0].length+"), h:"+height+" w:"+width);
+    System.out.println("Generating bundle of ("+face_v.length+" x "+face_v[0].length+"), h:"+height+" w:"+width);
 
     for (i = 0; i < files.length; i++) {
-        System.arraycopy(files[i].getDouble(),0,face_v[i],0,face_v[i].length);
-        System.out.println(files.length);
+        //System.arraycopy(files[i].getDouble(),0,face_v[i],0,face_v[i].length);
         face_v[i] = files[i].getDouble();
     }
 

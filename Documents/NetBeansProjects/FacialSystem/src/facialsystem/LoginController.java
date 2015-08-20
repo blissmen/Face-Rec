@@ -7,6 +7,7 @@ package facialsystem;
 
 import General.ControlledScreen;
 import General.DatabaseHelper;
+import General.GeneralFunctions;
 import General.ScreensController;
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,12 +28,13 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author USER
  */
-public class LoginController implements Initializable,ControlledScreen {
+public class LoginController implements Initializable, ControlledScreen {
+
     @FXML
     private AnchorPane login;
     private static ScreensController logScreen;
-    public static String interface_ID="FXMLDocument";
-    public static String interface_FXML="/facialsystem/FXMLDocument.fxml";
+    public static String interface_ID = "FXMLDocument";
+    public static String interface_FXML = "/facialsystem/FXMLDocument.fxml";
     @FXML
     private TextField username;
     @FXML
@@ -44,43 +46,42 @@ public class LoginController implements Initializable,ControlledScreen {
     private Label status;
     @FXML
     private TextField InitcourseCode;
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         database  = new DatabaseHelper();
-    logScreen = new ScreensController(login);
-    logScreen.loadScreen(interface_ID, interface_FXML);
+        database = new DatabaseHelper();
+        logScreen = new ScreensController(login);
+        logScreen.loadScreen(interface_ID, interface_FXML);
 //     logScreen.loadScreen(Sreen5_ID, Sreen5_FXML);
-    
+
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void verifyCreds(MouseEvent event) {
-        
-    String name = username.getText().trim().replace("'", "\'");
-    String pass  = password.getText();
-    String query ="select * from Account where Matricule= '"+name+"' and password='"+pass+"'";
+
+        String name = username.getText().trim().replace("'", "\'");
+        String pass = password.getText();
+        String query = "select * from Account where Matricule= '" + name + "' and password='" + pass + "'";
         try {
             ArrayList res = database.ExecuteQuery(query);
-            if(res.size()<2)
+            if (res.size() < 2) {
                 status.setVisible(true);
-            else
-            {
-               General.GeneralFunctions.FetchData(name);
-               logScreen.setScreen(interface_ID);
-               General.GeneralFunctions.getCourseClassID(InitcourseCode.getText());
-               General.GeneralFunctions.getCourseName(InitcourseCode.getText());
-               TeacherInfoController.teach.Populate();
-               User.setCurrentCourse(InitcourseCode.getText());
-               
-               
-               
-              
+            } else {
+                General.GeneralFunctions.FetchData(name);
+                logScreen.setScreen(interface_ID);
+                General.GeneralFunctions.getCourseClassID(InitcourseCode.getText());
+                General.GeneralFunctions function = new GeneralFunctions();
+                function.getCourseName(InitcourseCode.getText());
+                TeacherInfoController.teach.Populate();
+                User.setCurrentCourse(InitcourseCode.getText());
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,5 +93,4 @@ public class LoginController implements Initializable,ControlledScreen {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
 }

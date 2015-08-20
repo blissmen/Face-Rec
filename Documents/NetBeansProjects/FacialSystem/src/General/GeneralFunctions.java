@@ -6,6 +6,7 @@
 package General;
 
 import facialsystem.User;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -18,6 +19,8 @@ public class GeneralFunctions {
 
     private static DatabaseHelper database;
     private static String query;
+    private static ArrayList result;
+    private static Integer ClassID;
 
     @NotNull
     public static String toSentenceCase(@NotNull String string) {
@@ -71,32 +74,90 @@ public class GeneralFunctions {
 
         } catch (Exception ex) {
             User.setClasID(1);
-         }
+        }
 
     }
+    private String Coursename;
 
-    public static void getCourseName(String text) {
-        query = "select Course_Name from course where Course_ID='" + text + "'";
+    public String getCourseName(String text) {
+        query = "select Course_Name from course where Code'" + text + "'";
         try {
             ArrayList rey = database.ExecuteQuery(query);
             User.setCurrentCourse(rey.get(0).toString());
+            Coursename = rey.get(0).toString();
             System.out.println("from DB " + rey.get(0).toString());
         } catch (Exception ex) {
-           User.setCurrentCourse("Course  Does Not Exist");
+            User.setCurrentCourse("Course  Does Not Exist");
 
         }
-
+         return Coursename;
     }
+    private String courseName;
 
     public void saveStuClass(String mat) {
+        System.out.println(" matriculesss gotten " + mat);
         if (mat != null) {
-            mat = mat.substring(0, (mat.length() - 6));
+            System.out.println(" matricule gotten " + mat);
+            if (mat.length() > 6) {
+                mat = mat.substring(0, (mat.length() - 6));
 
-            query = "insert into attendacelist(Account_Matricule,Course_Course_ID,`Class registration_id`) values ('" + mat + ""
-                    + "','" + User.getCurrentCourse() + ""
-                    + "',4)";
-            database.Query(query);
+                query = "insert into attendacelist(Account_Matricule,Course_ID,`Class_ID`) values ('" + mat + ""
+                        + "','" + User.getCurrentCourse() + ""
+                        + "'," + User.getClasID() + ")";
+                try {
+                    database.Query(query);
+                } catch (Exception ds) {
+                    System.out.println(mat + " Already Ticked Present");
+                }
+            }
         }
     }
 
-}
+    public static ArrayList getClasslist(String course) {
+
+        query = " select  Student_Matricule   from student_has_course where Course_Code='" + course + "'";
+        try {
+            result = database.ExecuteQuery(query);
+        } catch (Exception sd) {
+            System.out.println("No Student registred for d course");
+
+        }
+        return result;
+    }
+
+    public static ArrayList getMatriculeOnAttndancList(String course, int clasId) {
+        query = " select  Account_Matricule from attendancelist where Course_Code='" + course + "' and Class_ID=" + clasId;
+        try {
+            result = database.ExecuteQuery(query);
+        } catch (Exception sd) {
+            System.out.println("No Student registred for d course");
+
+        }
+        return result;
+    }
+
+    public  int getClassID(String course, Date date) {
+        query = " select  ID from `class registration` where course_Code='" +course +"' and Date='"+date+"'";
+        try {
+            result = database.ExecuteQuery(query);
+            ClassID = Integer.valueOf(result.get(0).toString());
+        } catch (Exception sd) {
+            System.out.println("the specified Class did not hold on this Date");
+
+        }
+        return ClassID;
+    }
+    
+    public ArrayList getTimes(int ClasssId)
+    {
+    query= "select Start_Time,End_Time from `class registration` where ID= "+ClasssId;
+        try {
+            result = database.ExecuteQuery(query);
+        } catch (SQLException ex) {
+            System.out.println("Class doesnt Exist");    
+        }
+    return result;
+    }
+    }
+
+

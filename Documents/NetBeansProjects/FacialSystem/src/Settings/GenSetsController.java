@@ -30,7 +30,8 @@ public class GenSetsController implements Initializable, ControlledScreen {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+    {
         // TODO
     }    
 
@@ -39,8 +40,29 @@ public class GenSetsController implements Initializable, ControlledScreen {
     }
 
     @Override
-    public void setScreenParent(ScreensController pane) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setScreenParent(ScreensController pane) 
+    {
+    }
+
+
+    @FXML
+    private void ShowLastclass(ActionEvent event) 
+    {
+    }
+
+    @FXML
+    private void Show(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void SaveOnExit(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void chooseAttendance(ActionEvent event)
+    {
     }
     
 }

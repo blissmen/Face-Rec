@@ -5,64 +5,67 @@
  */
 package ListGenerator;
 
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class listPopulator {
 
-    public static SimpleStringProperty Name;
-    public static SimpleStringProperty Matricule;
-    public static SimpleStringProperty Start_time;
-    public static SimpleStringProperty End_time;
-    public static SimpleStringProperty Course_Code;
-    public static SimpleStringProperty status;
+    public StringProperty Name;
+    public StringProperty Matricule;
+    public StringProperty Start_time;
+    public StringProperty End_time;
+    public StringProperty Course_Code;
+    public StringProperty status;
 
-    public static SimpleStringProperty getStatus() {
-        return status;
+    public listPopulator() {
+
     }
 
-    public static void setStatus(SimpleStringProperty status) {
-        listPopulator.status = status;
-    }
-    
-    
-    public static SimpleStringProperty getName() {
+    public StringProperty getName() {
         return Name;
     }
 
-    public static void setName(SimpleStringProperty Name) {
-        listPopulator.Name = Name;
+    public void setName(StringProperty Name) {
+        this.Name = Name;
     }
 
-    public static SimpleStringProperty getMatricule() {
+    public StringProperty getMatricule() {
         return Matricule;
     }
 
-    public static void setMatricule(SimpleStringProperty Matricule) {
-        listPopulator.Matricule = Matricule;
+    public void setMatricule(StringProperty Matricule) {
+        this.Matricule = Matricule;
     }
 
-    public static SimpleStringProperty getStart_time() {
+    public StringProperty getStart_time() {
         return Start_time;
     }
 
-    public static void setStart_time(SimpleStringProperty Start_time) {
-        listPopulator.Start_time = Start_time;
+    public void setStart_time(StringProperty Start_time) {
+        this.Start_time = Start_time;
     }
 
-    public static SimpleStringProperty getEnd_time() {
+    public StringProperty getEnd_time() {
         return End_time;
     }
 
-    public static void setEnd_time(SimpleStringProperty End_time) {
-        listPopulator.End_time = End_time;
+    public void setEnd_time(StringProperty End_time) {
+        this.End_time = End_time;
     }
 
-    public static SimpleStringProperty getCourse_Code() {
+    public StringProperty getCourse_Code() {
         return Course_Code;
     }
 
-    public static void setCourse_Code(SimpleStringProperty Course_Code) {
-        listPopulator.Course_Code = Course_Code;
+    public void setCourse_Code(StringProperty Course_Code) {
+        this.Course_Code = Course_Code;
+    }
+
+    public StringProperty getStatus() {
+        return status;
+    }
+
+    public void setStatus(StringProperty status) {
+        this.status = status;
     }
 
 }

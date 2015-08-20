@@ -18,16 +18,17 @@ import java.io.*;
 
 public class TestFaceRecognition  {
 
-    public static void main(String testFace) {
+    public static void main(String args[]) {
 
+        if (args.length != 2) {
+            prUsage();
+            System.exit(0);
+        }
 
-//        String dir = "C:\\Users\\USER\\Documents\\NetBeansProjects\\Trainner\\Trainning_Set";
-//        String file = "u.jpg";
+        String dir = args[0];
+        String file = args[1];
 
       try {
-          
-        String dir = "C:\\Users\\USER\\Documents\\NetBeansProjects\\Trainner\\Trainning_Set";
-        String file = testFace;
         EigenFaceCreator creator = new EigenFaceCreator();
 
         //creator.USE_CACHE = -1;
@@ -38,12 +39,14 @@ public class TestFaceRecognition  {
         String result = creator.checkAgainst(file);
 
         System.out.println("Most closly reseambling: "+result+" with "+creator.DISTANCE+" distance.");
-          
+
       } catch (Exception e) { e.printStackTrace(); }
     }
 
-    
-    
+    static void prUsage() {
+        System.err.println("Usage: java TestFaceRecognition <directory of training images> <image to test against>");
+    }
+
 
 }
 

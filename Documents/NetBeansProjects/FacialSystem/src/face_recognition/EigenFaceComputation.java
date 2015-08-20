@@ -166,11 +166,11 @@ public class EigenFaceComputation {
     int[] tempV = new int[nrfaces];
     for ( j = 0; j < nrfaces; j++)
       tempV[nrfaces-1-j] = index[j];
-    
-//    for (int j = 0; j< nrfaces; j++) {
-//      System.out.println(temp[j]+" (was: "+index[j]+") "+eigValue[temp[j]]);
-//    }
-   
+    /*
+    for (int j = 0; j< nrfaces; j++) {
+      System.out.println(temp[j]+" (was: "+index[j]+") "+eigValue[temp[j]]);
+    }
+    */
     index = tempV;
 
      /*

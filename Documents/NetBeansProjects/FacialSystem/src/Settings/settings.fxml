@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
@@ -10,61 +11,108 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.SettingsController">
    <children>
-      <TitledPane animated="false" layoutX="-4.0" layoutY="-3.0" prefHeight="470.0" prefWidth="1306.0" text="SETTINGS">
-         <font>
-            <Font name="Arial Bold" size="30.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.14761904761904762">
-               <stops>
-                  <Stop color="BLACK" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <content>
-            <SplitPane dividerPositions="0.17638036809815952" prefHeight="160.0" prefWidth="200.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="269.0">
-                     <children>
-                        <Accordion layoutX="2.0" layoutY="2.0" prefHeight="256.0" prefWidth="220.0">
-                          <panes>
-                            <TitledPane animated="false" text="General">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="218.0">
-                                       <children>
-                                          <Button fx:id="GenSet" layoutY="1.0" mnemonicParsing="false" onAction="#genSet" prefHeight="60.0" prefWidth="222.0" text="General Settings" />
-                                          <Button layoutX="-2.0" layoutY="61.0" mnemonicParsing="false" onAction="#CameSets" prefHeight="60.0" prefWidth="222.0" text="Camra Settings" />
-                                          <Button layoutY="120.0" mnemonicParsing="false" onAction="#privacySets" prefHeight="60.0" prefWidth="222.0" text="privacy Settings" />
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </TitledPane>
-                            <TitledPane animated="false" prefHeight="230.0" prefWidth="220.0" text="Advanced">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="218.0">
-                                       <children>
-                                          <Button layoutX="-2.0" layoutY="-2.0" mnemonicParsing="false" onAction="#advancedSets" prefHeight="60.0" prefWidth="219.0" text="Advanced Settings" />
-                                          <Button layoutX="-1.0" layoutY="58.0" mnemonicParsing="false" onAction="#Notifications" prefHeight="60.0" prefWidth="219.0" text="Notification" />
-                                          <Button layoutX="-1.0" layoutY="118.0" mnemonicParsing="false" onAction="#Connections" prefHeight="63.0" prefWidth="220.0" text="Connnection" />
-                                          <ImageView fitHeight="57.0" fitWidth="71.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
-                                          <ImageView fitHeight="61.0" fitWidth="75.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
-                                          <ImageView fitHeight="61.0" fitWidth="71.0" layoutX="6.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </TitledPane>
-                          </panes>
-                        </Accordion>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane fx:id="modanchor" minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="923.0" />
-              </items>
-               <effect>
-                  <Reflection />
-               </effect>
-            </SplitPane>
-         </content>
-      </TitledPane>
+      <Pane layoutX="-6.0" prefHeight="467.0" prefWidth="1310.0">
+         <children>
+            <Pane layoutX="14.0" prefHeight="467.0" prefWidth="258.0">
+               <children>
+                  <Accordion prefHeight="467.0" prefWidth="234.0">
+                    <panes>
+                      <TitledPane id="button2" animated="false" blendMode="EXCLUSION" prefHeight="412.0" prefWidth="234.0" stylesheets="@GenStyles.css" text="General Settings" textFill="#a79595">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #9d7a7a;" stylesheets="@GenStyles.css">
+                                 <children>
+                                    <Button id="button1" mnemonicParsing="false" onAction="#genSet" prefHeight="84.0" prefWidth="254.0" stylesheets="@GenStyles.css" text="General Settings">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startY="0.4523809523809524">
+                                             <stops>
+                                                <Stop color="#393636" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                    </Button>
+                                    <Button id="button1" layoutY="84.0" mnemonicParsing="false" onAction="#Notifications" prefHeight="84.0" prefWidth="254.0" text="Notification">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.3190476190476191" startY="0.4523809523809524">
+                                             <stops>
+                                                <Stop color="#9d7a7a" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                      </TitledPane>
+                      <TitledPane id="button2" animated="false" blendMode="EXCLUSION" prefHeight="418.0" prefWidth="310.0" style="-fx-background-color: #a79595;" stylesheets="@GenStyles.css" text="Advanced Settings" textFill="#a79595">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #9d7a7a;" stylesheets="@GenStyles.css">
+                                 <children>
+                                    <Button id="button1" layoutX="-5.0" layoutY="3.0" mnemonicParsing="false" onAction="#advancedSets" prefHeight="78.0" prefWidth="261.0" text="Advanced Settings">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.3190476190476191" startY="0.4523809523809524">
+                                             <stops>
+                                                <Stop color="BLACK" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                    </Button>
+                                    <Button id="button1" layoutX="-1.0" layoutY="81.0" mnemonicParsing="false" onAction="#CameSets" prefHeight="78.0" prefWidth="254.0" text="Video Setings">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.3190476190476191" startY="0.4523809523809524">
+                                             <stops>
+                                                <Stop color="BLACK" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                    </Button>
+                                    <Button id="button1" layoutX="-1.0" layoutY="159.0" mnemonicParsing="false" onAction="#Connections" prefHeight="78.0" prefWidth="254.0" text="Connection">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <textFill>
+                                          <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.3190476190476191" startY="0.4523809523809524">
+                                             <stops>
+                                                <Stop color="BLACK" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </Pane>
+            <AnchorPane fx:id="modanchor" layoutX="274.0" prefHeight="467.0" prefWidth="1034.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -40,7 +40,7 @@ import javafx.scene.image.ImageView;
  *
  * @author USER
  */
-public class Ca_viewController implements Initializable, ControlledScreen {
+public class Ca_viewController implements Initializable, ControlledScreen, Runnable {
 
     @FXML
     private ImageView imagepath;
@@ -55,27 +55,31 @@ public class Ca_viewController implements Initializable, ControlledScreen {
     private Image CamStream;
     private CascadeClassifier faceCascade;
     private Mat imFrame;
+    private Mat grayFrame;
+    private CameraSettings CameraSetup;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.faceCascade = new CascadeClassifier();
-        this.absoluteFaceSize = 0;
-        this.checkboxSelection("resources/haarcascades/haarcascade_frontalface_default.xml");
+        CameraSetup = new CameraSettings();
+        this.absoluteFaceSize = 20;
+        this.checkboxSelection(CameraSetup.getCascadesFile());
 
-        
-        if (!User.getCourses().isEmpty()) {
-            capture_obj = new VideoCapture(CameraSettings.getCamaraID());
-            startCamera();
-        }
+        capture_obj = new VideoCapture(CameraSetup.getCamaraID());
+        startCamera();
+
     }
 
     protected void startCamera() {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if (!this.cameraActive) {
-            this.capture_obj.open(CameraSettings.getCamaraID());
+            this.capture_obj.open(CameraSetup.getCamaraID());
 
             // is the video stream available?
             if (this.capture_obj.isOpened()) {
@@ -93,14 +97,14 @@ public class Ca_viewController implements Initializable, ControlledScreen {
                                 imagepath.setImage(CamStream);
                                 imagepath.setSmooth(true);
                                 imagepath.setMouseTransparent(true);
-                                imagepath.setFitWidth(800);
+                                imagepath.setFitWidth(CameraSetup.getImageWidth());
                                 imagepath.setPreserveRatio(true);
                             }
                         });
                     }
                 };
                 this.timer = new Timer();
-                this.timer.schedule(frameGrabber, 0, CameraSettings.getFrameserSec());
+                this.timer.schedule(frameGrabber, 0, CameraSetup.getFrameserSec());
 
             } else {
                 System.err.println("Failed to open the camera connection...");
@@ -108,7 +112,7 @@ public class Ca_viewController implements Initializable, ControlledScreen {
         } else {
             // the camera is not active at this point
             this.cameraActive = false;
-			// update again the button content
+	     // update again the button content
             //this.capture.setText("Capture Next");
             // enable setting checkboxes
 
@@ -128,12 +132,11 @@ public class Ca_viewController implements Initializable, ControlledScreen {
     private void detectAndDisplay(Mat frames) {
         // init
         MatOfRect faces = new MatOfRect();
-        Mat grayFrame = new Mat();
-
+        Mat DetectgrayFrame = new Mat();
         // convert the frame in gray scale
-        Imgproc.cvtColor(frames, grayFrame, Imgproc.COLOR_BGR2YUV_I420);
+        //Imgproc.cvtColor(frames, grayFrame, Imgproc.COLOR_BGR2YUV_I420);
         // equalize the frame histogram to improve the result
-        Imgproc.equalizeHist(grayFrame, grayFrame);
+        Imgproc.equalizeHist(frames, DetectgrayFrame);
         int flags = CASCADE_SCALE_IMAGE;
         // compute minimum face size (20% of the frame height)
         if (this.absoluteFaceSize == 0) {
@@ -144,8 +147,7 @@ public class Ca_viewController implements Initializable, ControlledScreen {
         }
 
         // detect faces
-        this.faceCascade.detectMultiScale(grayFrame, faces, 1.1, 3, 0 | Objdetect.CASCADE_SCALE_IMAGE, new Size(
-                this.absoluteFaceSize, this.absoluteFaceSize), new Size());
+        this.faceCascade.detectMultiScale(grayFrame, faces, CameraSetup.getSearchScaleFactor(), CameraSetup.getMinNeighbors(), Objdetect.CASCADE_SCALE_IMAGE, CameraSetup.getMinFeatureSize(), new Size());
 
         // each rectangle in faces is a face
         Rect[] facesArray = faces.toArray();
@@ -158,9 +160,9 @@ public class Ca_viewController implements Initializable, ControlledScreen {
 
         }
         if (facesArray.length > 0) {
-            Tick(grayFrame);
+            System.out.println("Faces gotten" + facesArray.length);
+            this.run();
         }
-        System.out.println("Faces gotten" + facesArray.length);
 
     }
 
@@ -179,7 +181,7 @@ public class Ca_viewController implements Initializable, ControlledScreen {
                 if (!frame.empty()) {
 
                     MatOfRect faces = new MatOfRect();
-                    Mat grayFrame = new Mat();
+                    grayFrame = new Mat();
 
                     // convert the frame in gray scale
                     Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
@@ -187,15 +189,14 @@ public class Ca_viewController implements Initializable, ControlledScreen {
                     // equalize the frame histogram to improve the result
                     Imgproc.equalizeHist(grayFrame, grayFrame);
                     // convert the Mat object (OpenCV) to Image (JavaFX)
-                    this.detectAndDisplay(frame);
+                    this.detectAndDisplay(grayFrame);
                     //  Imgproc.equalizeHist(frame, frame);
-                    imageToShow = mat2Image(frame);
+                    imageToShow = mat2Image(grayFrame);
 
                 }
             } catch (Exception e) {
                 // log the (full) error
                 System.err.print("ERROR");
-                e.printStackTrace();
             }
 
         }
@@ -203,10 +204,9 @@ public class Ca_viewController implements Initializable, ControlledScreen {
     }
 
     private Image mat2Image(Mat frame) {
-        //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         MatOfByte buffer = new MatOfByte();
         // encode the frame in the buffer, according to the PNG format
-        Highgui.imencode("."+CameraSettings.getImageOutputFormat(), frame, buffer);
+        Highgui.imencode("." + CameraSetup.getImageOutputFormat(), frame, buffer);
         // build and return an Image created from the image encoded in the
         // buffer
         return new Image(new ByteArrayInputStream(buffer.toArray()));
@@ -220,13 +220,11 @@ public class Ca_viewController implements Initializable, ControlledScreen {
     public void Tick(Mat frame) {
         Rect rect_crop = new Rect(rect1.x, rect1.y, rect1.width, rect1.height);
         Mat image_roi = new Mat(frame, rect_crop);
-        String TestFace = "test."+CameraSettings.getImageOutputFormat();
+        String TestFace = "test." + CameraSetup.getImageOutputFormat();
         Highgui.imwrite(TestFace, image_roi);
-
         String matr = Recognizer.predict(TestFace);
         General.GeneralFunctions function = new GeneralFunctions();
         function.saveStuClass(matr);
-
     }
 
     private void checkboxSelection(String... classifierPath) {
@@ -235,8 +233,11 @@ public class Ca_viewController implements Initializable, ControlledScreen {
             this.faceCascade.load(xmlClassifier);
         }
 
-		// now the capture can start
-        //	this.cameraButton.setDisable(false);
+    }
+
+    @Override
+    public void run() {
+        Tick(grayFrame);
     }
 
 }

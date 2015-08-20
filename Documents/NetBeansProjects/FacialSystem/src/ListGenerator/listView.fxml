@@ -20,11 +20,11 @@
          <children>
             <TableView fx:id="listTable" editable="true" layoutX="71.0" layoutY="64.0" prefHeight="310.0" prefWidth="958.0" style="-fx-background-radius: 12;" tableMenuButtonVisible="true">
               <columns>
-                <TableColumn prefWidth="188.0" text="Name" />
-                <TableColumn prefWidth="183.0" text="Matricule" />
-                  <TableColumn prefWidth="192.0" text="Start time" />
-                  <TableColumn prefWidth="171.0" text="End Time" />
-                  <TableColumn prefWidth="128.0" text="Corse Code" />
+                <TableColumn fx:id="name" prefWidth="188.0" text="Name" />
+                <TableColumn fx:id="matric" prefWidth="183.0" text="Matricule" />
+                  <TableColumn fx:id="code" prefWidth="128.0" text="Corse Name" />
+                  <TableColumn fx:id="stTime" prefWidth="192.0" text="Start time" />
+                  <TableColumn fx:id="etTime" prefWidth="171.0" text="End Time" />
                   <TableColumn fx:id="state" prefWidth="75.0" text="Status" />
               </columns>
                <effect>
@@ -38,7 +38,7 @@
                   </Lighting>
                </effect>
             </TableView>
-            <TextField fx:id="courseCode" layoutX="152.0" layoutY="14.0" prefHeight="24.0" prefWidth="206.0" promptText="Enter Course Name" />
+            <TextField fx:id="courseCode" layoutX="152.0" layoutY="14.0" prefHeight="24.0" prefWidth="206.0" promptText="Enter Course Code" />
             <Button fx:id="submitBtn" layoutX="562.0" mnemonicParsing="false" onAction="#getList" prefHeight="32.0" prefWidth="206.0" style="-fx-background-color: #1111; -fx-background-radius: 12;" text="Get">
                <font>
                   <Font size="25.0" />

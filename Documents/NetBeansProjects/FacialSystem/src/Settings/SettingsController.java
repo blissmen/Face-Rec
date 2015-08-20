@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+
 
 import javafx.scene.layout.AnchorPane;
 
@@ -36,8 +36,8 @@ public class SettingsController implements Initializable,ControlledScreen {
     public static String NotSetScreen_FXM="/Settings/NotificationSets.fxml";
     public static String privaSetScreen_ID="PrivaceySets";
     public static String privaSetScreen_FXM="/Settings/privaceySets.fxml";
-    @FXML
-    private Button GenSet;
+    public static String GenSetScreen_ID="GenSets";
+    public static String GenSetScreen_FXM="/Settings/GenSets.fxml";
   
   
   
@@ -52,38 +52,46 @@ public class SettingsController implements Initializable,ControlledScreen {
         SettingsScreenController.loadScreen(NotSetScreen_ID, NotSetScreen_FXM);
         SettingsScreenController.loadScreen(CameraSetScreen_ID, CameraSetScreen_FXM);
         SettingsScreenController.loadScreen(ConnectionSetScreen_ID, ConnectionSetScreen_FXM);
-       SettingsScreenController.loadScreen(privaSetScreen_ID, privaSetScreen_FXM);
-        // TODO
+        SettingsScreenController.loadScreen(privaSetScreen_ID, privaSetScreen_FXM);
+        SettingsScreenController.loadScreen(GenSetScreen_ID, GenSetScreen_FXM);
+        
     }    
 
 
     @FXML
     private void genSet(ActionEvent event) {
+        SettingsScreenController.setScreen(GenSetScreen_ID);
     }
 
     @FXML
     private void CameSets(ActionEvent event) {
+     SettingsScreenController.setScreen(CameraSetScreen_ID);
     }
 
-    @FXML
     private void privacySets(ActionEvent event) {
+    SettingsScreenController.setScreen(privaSetScreen_ID);
     }
 
     @FXML
     private void advancedSets(ActionEvent event) {
+    SettingsScreenController.setScreen(AdvSetScreen_ID);
     }
 
     @FXML
     private void Notifications(ActionEvent event) {
+        SettingsScreenController.setScreen(NotSetScreen_ID);
     }
 
     @FXML
     private void Connections(ActionEvent event) {
+     SettingsScreenController.setScreen(ConnectionSetScreen_ID);
     }
 
     @Override
     public void setScreenParent(ScreensController pane) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
     
 }

@@ -73,12 +73,13 @@ public class FXMLDocumentController implements Initializable,ControlledScreen {
         mainScreen.setScreen(Screen2_ID);
         mainScreen.loadScreen(Screen3_ID, Screen3_FXML);
         ListScreen.loadScreen(Screen4_ID, Screen4_FXML);
+        
        
        }
     
     public static void loadListView(String Course)
             {
-            mainScreen.setScreen(Screen4_ID);
+            ListScreen.setScreen(Screen4_ID);
             
             }
     public static void loadLogin()

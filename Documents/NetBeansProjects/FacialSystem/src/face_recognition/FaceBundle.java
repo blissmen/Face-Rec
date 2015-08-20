@@ -209,12 +209,12 @@ public class FaceBundle implements Serializable, Comparable {
 
     computed = false;
     System.arraycopy(cmpFace,0,inputFace,0,length);
-
+      System.out.println(cmpFace+" : "+inputFace);
     for ( pix = 0; pix < inputFace.length; pix++) {
         inputFace[pix] = inputFace[pix] - avgFace[pix];
     }
 
-    //System.out.println(nrfaces+" "+inputFace.length);
+    System.out.println(nrfaces+" "+inputFace.length);
     double[] input_wk = new double[MAGIC_NR];
     double temp = 0;
     /* Subtract the image from the average image */
@@ -238,7 +238,7 @@ public class FaceBundle implements Serializable, Comparable {
         temp = 0.0;
         for (j = 0; j < MAGIC_NR; j++) {
           distance[j] = Math.abs(input_wk[j] - wk[image][j]);
-          System.out.print(distance[j]+"\t");
+          //System.out.print(distance[j]+"\t");
         }
         //System.out.println();
         if (image == 0)
