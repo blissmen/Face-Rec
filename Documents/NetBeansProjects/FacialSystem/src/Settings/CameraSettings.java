@@ -12,16 +12,16 @@ import org.opencv.core.Size;
  * @author USER
  */
 public class CameraSettings {
-    public int CamaraID=0;
-    public int frameserSec=33;
-    public String imageOutputFormat="jpg";
-    public String CascadesFile="resources/haarcascades/haarcascade_frontalface_alt";
-    public String resolution ;
-    public int imageHeight;
-    public Size  minFeatureSize = new Size(20, 20); 
-     public float searchScaleFactor = 1.1f; // How many sizes to search.
-    public int minNeighbors = 4;
 
+    public int CamaraID = 0;
+    public int frameserSec = 33;
+    public String imageOutputFormat = "jpg";
+    public String CascadesFile = "resources/haarcascades/haarcascade_frontalface_alt.xml";
+    public String resolution;
+    public int imageHeight;
+    public Size minFeatureSize = new Size(60, 60);
+    public float searchScaleFactor = 1.1f; // How many sizes to search.
+    public int minNeighbors = 4;
 
     public Size getMinFeatureSize() {
         return minFeatureSize;
@@ -46,7 +46,7 @@ public class CameraSettings {
     public void setMinNeighbors(int minNeighbors) {
         this.minNeighbors = minNeighbors;
     }
-   
+
     public int getCamaraID() {
         return CamaraID;
     }
@@ -79,45 +79,43 @@ public class CameraSettings {
         this.CascadesFile = CascadesFile;
     }
 
-    public  String getResolution() {
+    public String getResolution() {
         return resolution;
     }
 
-    public  void setResolution(String resolution) {
+    public void setResolution(String resolution) {
         this.resolution = resolution;
     }
 
-    public  int getImageHeight() {
+    public int getImageHeight() {
         return imageHeight;
     }
 
-    public  void setImageHeight(int imageHeight) {
+    public void setImageHeight(int imageHeight) {
         this.imageHeight = imageHeight;
     }
 
-    public  int getImageWidth() {
+    public int getImageWidth() {
         return imageWidth;
     }
 
-    public  void setImageWidth(int imageWidth) {
+    public void setImageWidth(int imageWidth) {
         this.imageWidth = imageWidth;
     }
-    public int imageWidth=800;
+    public int imageWidth = 800;
 
     void SelectCascadeFile(String cascadefile) {
-        
-       switch(cascadefile)
-       {
-           case "Haar Classifier":
-               this.setCascadesFile("resources/haarcascades/haarcascade_frontalface_default.xml");
-               break;
-           case "Lbp Classifier":
-               this.setCascadesFile("resources/lbpcascades/lbpcascade_frontalface.xml");
-               break;
-           default:
-               this.setCascadesFile(CascadesFile);
-       }
-        
-        
+
+        switch (cascadefile) {
+            case "Haar Classifier":
+                this.setCascadesFile("resources/haarcascades/haarcascade_frontalface_default.xml");
+                break;
+            case "Lbp Classifier":
+                this.setCascadesFile("resources/lbpcascades/lbpcascade_frontalface.xml");
+                break;
+            default:
+                this.setCascadesFile(CascadesFile);
+        }
+
     }
 }

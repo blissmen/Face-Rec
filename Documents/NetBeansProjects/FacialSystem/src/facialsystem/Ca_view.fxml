@@ -6,16 +6,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.Ca_viewController">
+<AnchorPane id="back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0" stylesheets="@../Settings/GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.Ca_viewController">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0" style="-fx-background-color: #182334;">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0">
          <children>
             <Label layoutX="221.0" layoutY="8.0" prefHeight="31.0" prefWidth="312.0" text="Camara View " textFill="#f5efef">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <ImageView fx:id="imagepath" fitHeight="333.0" fitWidth="594.0" layoutX="80.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imagepath" fitHeight="333.0" fitWidth="984.0" layoutX="80.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

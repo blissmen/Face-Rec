@@ -6,8 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" style="-fx-background-color: #262a39;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.NotificationSetsController">
+<AnchorPane id="back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" stylesheets="@GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.NotificationSetsController">
    <children>
       <CheckBox layoutX="69.0" layoutY="56.0" mnemonicParsing="false" text="Notify me when ts my Class Time">
          <font>
@@ -35,5 +34,10 @@
             </LinearGradient>
          </textFill>
       </CheckBox>
+      <Button blendMode="OVERLAY" layoutX="296.0" layoutY="302.0" mnemonicParsing="false" opacity="0.86" prefHeight="72.0" prefWidth="188.0" text="Save">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

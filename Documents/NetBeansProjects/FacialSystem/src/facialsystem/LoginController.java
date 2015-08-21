@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * FXML Controller class
@@ -65,7 +66,9 @@ public class LoginController implements Initializable, ControlledScreen {
 
     @FXML
     private void verifyCreds(MouseEvent event) {
-
+        if(InitcourseCode.getText()==null||InitcourseCode.getText().isEmpty()||InitcourseCode.getText()=="")
+            Dialogs.create().message("Enter The Course you are to administer Now").showError();
+        else{
         String name = username.getText().trim().replace("'", "\'");
         String pass = password.getText();
         String query = "select * from Account where Matricule= '" + name + "' and password='" + pass + "'";
@@ -78,13 +81,18 @@ public class LoginController implements Initializable, ControlledScreen {
                 logScreen.setScreen(interface_ID);
                 General.GeneralFunctions.getCourseClassID(InitcourseCode.getText());
                 General.GeneralFunctions function = new GeneralFunctions();
-                function.getCourseName(InitcourseCode.getText());
-                TeacherInfoController.teach.Populate();
-                User.setCurrentCourse(InitcourseCode.getText());
+               String Name= function.getCourseName(InitcourseCode.getText());
+               User.setCurrentCourse(Name);
+               TeacherInfoController.cl.setCOURSE(InitcourseCode.getText());
+               TeacherInfoController.teach.Populate();
+                
+                status.setVisible(false);
 
             }
+        
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
 

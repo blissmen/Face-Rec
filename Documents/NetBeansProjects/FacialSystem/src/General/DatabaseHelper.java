@@ -213,11 +213,9 @@ public class DatabaseHelper {
             }
         } catch (SQLException pp) {
             System.out.println(pp.getMessage());
-            resultSet.add("");
+//            resultSet.add("");
         }
 
-        if (resultSet.isEmpty())
-            resultSet.add("");
         return resultSet;
     }
 

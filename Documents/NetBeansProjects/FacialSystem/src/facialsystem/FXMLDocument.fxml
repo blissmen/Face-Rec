@@ -9,16 +9,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.FXMLDocumentController">
+<AnchorPane id="back" prefHeight="422.0" prefWidth="1301.0" stylesheets="@../Settings/GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Pane layoutY="-2.0" prefHeight="175.0" prefWidth="1301.0" style="-fx-background-color: #1f2d40; -fx-border-color: #273a58;">
+      <Pane prefHeight="175.0" prefWidth="1308.0" style="-fx-background-color: #1f2d40; -fx-border-color: #273a58;">
          <children>
-            <Label blendMode="SRC_ATOP" layoutX="-1.0" prefHeight="175.0" prefWidth="248.0" text="Facial Recognition Based Attendance System" textFill="#edebeb" wrapText="true">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
             <Label layoutX="504.0" layoutY="25.0" prefHeight="44.0" prefWidth="379.0" text="CAMARA ID: CA01" textFill="#fafafa">
                <font>
                   <Font name="System Bold" size="43.0" />
@@ -29,34 +24,36 @@
                   <Font size="44.0" />
                </font>
             </Label>
+            <Label blendMode="SRC_ATOP" layoutX="10.0" layoutY="2.0" prefHeight="175.0" prefWidth="248.0" text="Facial Recognition Based Attendance System" textFill="#edebeb" wrapText="true">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane layoutX="-5.0" layoutY="173.0" prefHeight="411.0" prefWidth="248.0" style="-fx-background-color: #142135; -fx-border-color: #273a58;">
-         <children>
-            <Button id="button1" fx:id="register" layoutX="-1.0" layoutY="31.0" mnemonicParsing="false" onAction="#RegisterClass" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Register a Class">
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#ebe5e5" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-               <font>
-                  <Font name="Calibri" size="23.0" />
-               </font>
-            </Button>
-            <Button id="button1" fx:id="CaButton" layoutY="95.0" mnemonicParsing="false" onAction="#loadCamera" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Camara View" textFill="#fffdfd">
-               <font>
-                  <Font name="Calibri" size="31.0" />
-               </font>
-            </Button>
-            <Button id="button1" fx:id="set" layoutY="160.0" mnemonicParsing="false" onAction="#settings" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Setup" textFill="#fcf9f9">
-               <font>
-                  <Font name="Calibri Bold" size="36.0" />
-               </font>
-            </Button>
-         </children></Pane>
-      <AnchorPane fx:id="Tab" layoutX="233.0" layoutY="173.0" prefHeight="411.0" prefWidth="1068.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0" />
+      <AnchorPane fx:id="Tab" layoutX="279.0" layoutY="173.0" prefHeight="249.0" prefWidth="1029.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="279.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0" />
+      <Button id="button1" fx:id="register" layoutX="2.0" layoutY="266.0" mnemonicParsing="false" onAction="#RegisterClass" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Register a Class">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ebe5e5" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Calibri" size="23.0" />
+         </font>
+      </Button>
+      <Button id="button1" fx:id="set" layoutY="335.0" mnemonicParsing="false" onAction="#settings" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Setup" textFill="#fcf9f9">
+         <font>
+            <Font name="Calibri Bold" size="36.0" />
+         </font>
+      </Button>
+      <Button id="button1" fx:id="CaButton" layoutX="2.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadCamera" prefHeight="64.0" prefWidth="248.0" stylesheets="@../style.css" text="Camara View" textFill="#fffdfd">
+         <font>
+            <Font name="Calibri" size="31.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

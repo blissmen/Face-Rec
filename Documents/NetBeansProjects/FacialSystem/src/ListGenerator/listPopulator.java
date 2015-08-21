@@ -5,67 +5,34 @@
  */
 package ListGenerator;
 
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class listPopulator {
 
-    public StringProperty Name;
-    public StringProperty Matricule;
-    public StringProperty Start_time;
-    public StringProperty End_time;
-    public StringProperty Course_Code;
-    public StringProperty status;
+    public SimpleStringProperty Name = new SimpleStringProperty();
+    public SimpleStringProperty Matricule = new SimpleStringProperty();
+    public SimpleStringProperty StartTime = new SimpleStringProperty();
+    public SimpleStringProperty EndTime = new SimpleStringProperty();
+    public SimpleStringProperty Status = new SimpleStringProperty();
 
-    public listPopulator() {
-
+    public String getName() {
+        return Name.get();
     }
 
-    public StringProperty getName() {
-        return Name;
+    public String getMatricule() {
+        return Matricule.get();
     }
 
-    public void setName(StringProperty Name) {
-        this.Name = Name;
+    public String getStartTime() {
+        return StartTime.get();
     }
 
-    public StringProperty getMatricule() {
-        return Matricule;
+    public String getEndTime() {
+        return EndTime.get();
     }
 
-    public void setMatricule(StringProperty Matricule) {
-        this.Matricule = Matricule;
-    }
-
-    public StringProperty getStart_time() {
-        return Start_time;
-    }
-
-    public void setStart_time(StringProperty Start_time) {
-        this.Start_time = Start_time;
-    }
-
-    public StringProperty getEnd_time() {
-        return End_time;
-    }
-
-    public void setEnd_time(StringProperty End_time) {
-        this.End_time = End_time;
-    }
-
-    public StringProperty getCourse_Code() {
-        return Course_Code;
-    }
-
-    public void setCourse_Code(StringProperty Course_Code) {
-        this.Course_Code = Course_Code;
-    }
-
-    public StringProperty getStatus() {
-        return status;
-    }
-
-    public void setStatus(StringProperty status) {
-        this.status = status;
+    public String getStatus() {
+        return Status.get();
     }
 
 }

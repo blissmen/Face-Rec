@@ -12,72 +12,80 @@ import java.sql.Date;
  * @author USER
  */
 public class Class {
-   static int ID;
-   static Date date;
-   static String COURSE;
-   static String COURSEName;
-   static String startTime;
-   static String endTime;
-   
-    public static Date getDate() {
-        return date;
+
+    public static String STATUS = "ended";
+
+    public static String getSTATUS() {
+        return STATUS;
     }
 
-    public static void setDate(Date date) {
-        Class.date = date;
+    public static void setSTATUS(String STATUS) {
+        Class.STATUS = STATUS;
     }
-   
+    public int ID;
+    public Date date;
+    public String COURSE;
 
-    public static String getCOURSEName() {
-        return COURSEName;
-    }
-
-    public static void setCOURSEName(String COURSEName) {
-        Class.COURSEName = COURSEName;
-    }
-
-    public static String getStartTime() {
-        return startTime;
-    }
-
-    public static void setStartTime(String startTime) {
-        Class.startTime = startTime;
-    }
-
-    public static String getEndTime() {
-        return endTime;
-    }
-
-    public static void setEndTime(String endTime) {
-        Class.endTime = endTime;
-    }
-    public static int getID() {
+    public int getID() {
         return ID;
     }
 
-    public static void setID(int IDT) {
-        ID = IDT;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public static String getCOURSE() {
+    public String getCOURSE() {
         return COURSE;
     }
 
-    public static  void setCOURSE(String COURSET) {
-        COURSE = COURSET;
+    public void setCOURSE(String COURSE) {
+        this.COURSE = COURSE;
     }
-    public void SaveClass()
-    {
-    String query = "Insert into `class registration`(ID,Lecturer_ID,Start_Time,End_Time,Course_ID,Course_Name,ClassDate) values ("
-                + ID + ""
-                + ",'" + User.getMatricule() + ""
-                + "','" +startTime+ ""
-                + "','" +endTime+ ""
-                + "','" + COURSE + ""
-                + "','" + COURSEName + ""
-                + "','" + date + "')"
-            ;
- TeacherInfoController.database.Query(query);
-        
+
+    public String getLecturerID() {
+        return LecturerID;
+    }
+
+    public void setLecturerID(String LecturerID) {
+        this.LecturerID = LecturerID;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+    public String LecturerID;
+    public String startTime;
+    public String endTime;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date1) {
+        this.date = date1;
+    }
+
+    public void SaveClass() {
+        String query = "Insert into `class registration` (ID,Lecturer_ID,Start_Time,End_Time,Course_Code,Date) values ("
+                + this.getID() + ""
+                + ",'" + this.getLecturerID() + ""
+                + "','" + this.getStartTime() + ""
+                + "','" + this.getEndTime() + ""
+                + "','" + this.getCOURSE() + ""
+                + "','" + this.getDate() + "')";
+        TeacherInfoController.database.Query(query);
+
     }
 }

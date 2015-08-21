@@ -67,7 +67,7 @@ public class FXMLDocumentController implements Initializable,ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         mainScreen = new ScreensController(Tab);
         ListScreen = new ScreensController(Tab);
-        database = new DatabaseHelper();
+        //database = new DatabaseHelper();
         mainScreen.loadScreen(Screen2_ID, Screen2_FXML);
         mainScreen.loadScreen(Screen_ID, Screen_FXML);
         mainScreen.setScreen(Screen2_ID);

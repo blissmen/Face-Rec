@@ -8,10 +8,12 @@ package facialsystem;
 import General.ControlledScreen;
 import General.DatabaseHelper;
 import General.ScreensController;
-import com.sun.glass.ui.Application;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -31,6 +33,7 @@ import javafx.scene.image.ImageView;
  * @author USER
  */
 public class TeacherInfoController implements Initializable, ControlledScreen {
+
     private static ArrayList res;
 
     @FXML
@@ -52,20 +55,23 @@ public class TeacherInfoController implements Initializable, ControlledScreen {
     @FXML
     private Label CN;
 
-    protected static  DatabaseHelper database;
+    protected static DatabaseHelper database;
     @FXML
     private Label nameTag;
     @FXML
     private Button start;
     @FXML
     private DatePicker date;
+    public static Class cl;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cl = new Class();
         System.out.println("Loading ..............");  // TODO
+        date.setValue(LocalDate.now());
         teach = new TeacherData();
         date.setShowWeekNumbers(true);
         database = new DatabaseHelper();
@@ -74,18 +80,21 @@ public class TeacherInfoController implements Initializable, ControlledScreen {
 
     @FXML
     private void EndClass(ActionEvent event) {
-        Class cl =new Class();
-        Class.setEndTime(ET.getText());
-        Class.setID(User.getClasID());
-        Class.setStartTime(st.getText());
-        Class.setDate(Date.valueOf(date.getValue()));
-        Class.setCOURSE(User.getCurrentCourse());
+        this.ET.setText(Time.valueOf(LocalTime.now()).toString());
+        st.setDisable(false);
+        start.setDisable(true);
+        ET.setDisable(true);
+        cl.setEndTime(ET.getText());
+        cl.setID(User.getClasID());
+        cl.setStartTime(st.getText());
+        cl.setLecturerID(User.getMatricule());
+        cl.setDate(Date.valueOf(date.getValue()));
+        Class.setSTATUS("ended");
+        //cl.setCOURSE(User.getCurrentCourse());
         cl.SaveClass();
-        Application mine =Application.GetApplication();
-        mine.terminate();
-       
-        FXMLDocumentController.loadLogin();
-        }
+
+//        FXMLDocumentController.loadLogin();
+    }
 
     @FXML
     private void viewList(ActionEvent event) {
@@ -102,20 +111,19 @@ public class TeacherInfoController implements Initializable, ControlledScreen {
         //CN.setText("Hellos");
         System.out.println(User.getFirst_Name());
         nameTag.setText(User.getFirst_Name());
-        id.setText(""+Class.getID());
-        CN.setText(Class.getCOURSEName());
-       
-          
+        id.setText("" + cl.getID());
+        CN.setText(User.getCurrentCourse());
+
     }
 
-    protected  static void getCN() {
-        String query = "select Course_Name from course where Course_ID='" + User.getCurrentCourse()+ "'";
+    protected static void getCN() {
+        String query = "select Course_Name from course where Code='" + User.getCurrentCourse() + "'";
         System.out.println(query);
-       
+
         try {
-             res = database.ExecuteQuery(query);
-            Class.setCOURSEName(res.get(0).toString());
-            
+            res = database.ExecuteQuery(query);
+            User.setCurrentCourse(res.get(0).toString());
+
         } catch (SQLException ex) {
             Logger.getLogger(TeacherInfoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -123,7 +131,14 @@ public class TeacherInfoController implements Initializable, ControlledScreen {
 
     @FXML
     private void startClass(ActionEvent event) {
+        this.start.setDisable(true);
+        this.st.setText(Time.valueOf(LocalTime.now()).toString());
+        st.setDisable(true);
+        Class.setSTATUS("started");
         en_cl.setDisable(false);
+        Ca_viewController.camera.ActivateCamer();
+       // Ca_viewController cameraController = new Ca_viewController();
+        // cameraController.startCamera();
     }
 
     class TeacherData {

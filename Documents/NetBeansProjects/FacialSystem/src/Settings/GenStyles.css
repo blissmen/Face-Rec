@@ -12,11 +12,16 @@ and open the template in the editor.
      -fx-background-color: #256bb1;
 }
 #button1 {
-
 	-fx-background-color: #243044;
 	-fx-border-color: #0f1721;
-        -fx-background-radius: 8;
-       
+        -fx-background-radius: 8;      
+}
+#back {   
+    -fx-background-image: url("back.png");   
+}
+#resBOt:hover {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+     -fx-background-color: #ae0404;
 }
 
 #button2 {
@@ -25,4 +30,16 @@ and open the template in the editor.
 	-fx-border-color: #0f1721;
         -fx-background-radius: 8;
        
+}
+#logScreen{
+    
+    -fx-background-image: url("4th.png");   
+}
+#ane{
+    
+    -fx-background-image: url("back.png");   
+}
+#lab{
+    
+    -fx-background-image: url("thurd.png");   
 }

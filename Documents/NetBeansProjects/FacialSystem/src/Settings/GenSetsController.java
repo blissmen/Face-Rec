@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -45,10 +46,6 @@ public class GenSetsController implements Initializable, ControlledScreen {
     }
 
 
-    @FXML
-    private void ShowLastclass(ActionEvent event) 
-    {
-    }
 
     @FXML
     private void Show(ActionEvent event)
@@ -61,8 +58,16 @@ public class GenSetsController implements Initializable, ControlledScreen {
     }
 
     @FXML
-    private void chooseAttendance(ActionEvent event)
+    private void attendanceatEnd(ActionEvent event)
     {
+    }
+
+    @FXML
+    private void attendanceatStart(ActionEvent event) {
+    }
+
+    @FXML
+    private void Save(MouseEvent event) {
     }
     
 }

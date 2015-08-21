@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.controlsfx.dialog.DialogStyle;
 import org.controlsfx.dialog.Dialogs;
 
 /**
@@ -67,7 +68,7 @@ public class CameraSetsController implements Initializable, ControlledScreen {
 
     @FXML
     private void saveSetsData(ActionEvent event) {
-      Dialogs.create().message("Most this Changes Will only take effect after a reboot of the Systems").notify();
+      Dialogs.create().message("Most this Changes Will only take effect after a reboot of the Systems").masthead("Modifyig Camera and face Recognition Settings").style(DialogStyle.CROSS_PLATFORM_DARK);
     }
 
     @FXML

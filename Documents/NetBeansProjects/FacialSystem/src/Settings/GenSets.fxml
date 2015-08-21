@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.GenSetsController">
+<AnchorPane id="back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" stylesheets="@GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.GenSetsController">
    <children>
-      <Pane prefHeight="413.0" prefWidth="1068.0" style="-fx-background-color: #243044;">
+      <Pane prefHeight="413.0" prefWidth="1068.0">
          <children>
             <CheckBox fx:id="saingav" layoutX="34.0" layoutY="21.0" mnemonicParsing="false" onAction="#SaveOnExit" prefHeight="25.0" prefWidth="194.0" text="Save Class upon Exit" textFill="#d0c2c2">
                <font>
                   <Font size="15.0" />
                </font></CheckBox>
-            <CheckBox layoutX="34.0" layoutY="71.0" mnemonicParsing="false" onAction="#ShowLastclass" text="Show me when Last I Came to Class" textFill="#d0c2c2">
+            <CheckBox layoutX="34.0" layoutY="71.0" mnemonicParsing="false" onAction="#attendanceatEnd" text="Take AttenDance When Class Ends" textFill="#d0c2c2">
                <font>
                   <Font size="15.0" />
                </font></CheckBox>
-            <CheckBox layoutX="34.0" layoutY="119.0" mnemonicParsing="false" onAction="#Show" text="Show my profile picture" textFill="#d0c2c2">
+            <CheckBox layoutX="34.0" layoutY="115.0" mnemonicParsing="false" onAction="#Show" text="Show my profile picture" textFill="#d0c2c2">
                <font>
                   <Font size="15.0" />
                </font></CheckBox>
-            <Hyperlink fx:id="changeD" layoutX="135.0" layoutY="258.0" onAction="#Changepic" prefHeight="29.0" prefWidth="156.0" text="Change profile ">
+            <Hyperlink fx:id="changeD" layoutX="135.0" layoutY="258.0" onAction="#Changepic" prefHeight="29.0" prefWidth="156.0" text="Change profile " textFill="#110202" underline="true">
                <font>
                   <Font size="15.0" />
                </font></Hyperlink>
-            <CheckBox layoutX="34.0" layoutY="157.0" mnemonicParsing="false" onAction="#chooseAttendance" text="Choose when to take attendance" textFill="#d0c2c2">
+            <CheckBox layoutX="34.0" layoutY="157.0" mnemonicParsing="false" onAction="#attendanceatStart" prefHeight="21.0" prefWidth="264.0" selected="true" text="Take Attendance When Class Starts" textFill="#d0c2c2">
                <font>
                   <Font size="15.0" />
                </font>
             </CheckBox>
+            <Button blendMode="MULTIPLY" layoutX="411.0" layoutY="327.0" mnemonicParsing="false" onAction="#Save" prefHeight="56.0" prefWidth="132.0" text="Save">
+               <textFill>
+                  <RadialGradient centerX="0.25555555555555554" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#801212" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

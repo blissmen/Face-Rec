@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.TeacherInfoController">
+<AnchorPane id="back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="1068.0" stylesheets="@../Settings/GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="facialsystem.TeacherInfoController">
    <children>
-      <Pane layoutX="-7.0" layoutY="-14.0" prefHeight="411.0" prefWidth="1068.0" style="-fx-background-color: #182334; -fx-border-color: #273a58;">
+      <Pane layoutX="-7.0" layoutY="-17.0" prefHeight="11.0" prefWidth="2.0" style="-fx-background-color: #182334; -fx-border-color: #273a58;">
          <children>
             <TextField fx:id="st" layoutX="133.0" layoutY="166.0" promptText="StartTime: e.g 13:00:00" style="-fx-background-radius: 8;" />
             <TextField fx:id="ET" layoutX="564.0" layoutY="169.0" promptText="End Time: e.g 15:00" style="-fx-background-radius: 8;" />

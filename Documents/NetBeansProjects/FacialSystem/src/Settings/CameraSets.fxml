@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" style="-fx-background-color: #243154;" stylesheets="@GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.CameraSetsController">
+<AnchorPane id="back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="923.0" style="-fx-background-color: #243154;" stylesheets="@GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.CameraSetsController">
    <children>
       <Label layoutX="28.0" layoutY="34.0" prefHeight="23.0" prefWidth="120.0" text="Select Classifier" textFill="#e1d8d8">
          <font>
@@ -34,7 +36,7 @@
             <Font size="15.0" />
          </font></Label>
       <TextField fx:id="AvgF" editable="false" layoutX="228.0" layoutY="174.0" prefHeight="25.0" prefWidth="217.0" promptText="Average Face Size" />
-      <Button id="button1" layoutX="335.0" layoutY="326.0" mnemonicParsing="false" onAction="#saveSetsData" prefHeight="52.0" prefWidth="270.0" style="-fx-background-radius: 8;" text="Save">
+      <Button id="button1" blendMode="SCREEN" layoutX="335.0" layoutY="326.0" mnemonicParsing="false" onAction="#saveSetsData" prefHeight="52.0" prefWidth="270.0" style="-fx-background-radius: ;" text="Save">
          <font>
             <Font size="31.0" />
          </font>
@@ -46,6 +48,12 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="V_RESIZE" />
+         </cursor>
+         <effect>
+            <Bloom />
+         </effect>
       </Button>
       <Label layoutX="28.0" layoutY="219.0" prefHeight="21.0" prefWidth="149.0" text="Search Scale Factor" textFill="#e1d8d8">
          <font>

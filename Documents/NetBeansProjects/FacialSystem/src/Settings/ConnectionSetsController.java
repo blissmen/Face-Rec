@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 
 /**
  * FXML Controller class
@@ -39,6 +40,8 @@ public class ConnectionSetsController implements Initializable,ControlledScreen 
 
     @FXML
     private void UseMobile(ActionEvent event) {
+        mobileHost.setDisable(false);
+        mobileHost.setTooltip(new Tooltip("Enter The Ip address of the phone"));
     }
 
     @FXML

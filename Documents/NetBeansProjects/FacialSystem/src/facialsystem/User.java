@@ -27,14 +27,14 @@ public class User {
 
     public static void setClasID(int ClasID) {
         User.ClasID = ClasID;
-        Class.setID(ClasID);
+        TeacherInfoController.cl.setID(ClasID);
     }
     public static String getCurrentCourse() {
         return CurrentCourse;
     }
 
     public static void setCurrentCourse(String CurrentCourse) {
-        Class.setCOURSEName(CurrentCourse);
+        
         User.CurrentCourse = CurrentCourse;
     }
 

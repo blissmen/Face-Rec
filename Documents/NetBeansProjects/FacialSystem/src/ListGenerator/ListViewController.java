@@ -6,8 +6,11 @@
 package ListGenerator;
 
 import General.ControlledScreen;
+import General.GeneralFunctions;
 import General.ScreensController;
 import java.net.URL;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,7 +32,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ListViewController implements Initializable, ControlledScreen {
 
     @FXML
-    private TableView<?> listTable;
+    private TableView listTable;
     @FXML
     private TextField courseCode;
     @FXML
@@ -41,8 +44,7 @@ public class ListViewController implements Initializable, ControlledScreen {
     ObservableList filler;
     @FXML
     private TableColumn state;
-    @FXML
-    private TableColumn name;
+
     @FXML
     private TableColumn matric;
     @FXML
@@ -51,41 +53,65 @@ public class ListViewController implements Initializable, ControlledScreen {
     private TableColumn etTime;
     @FXML
     private TableColumn code;
+    General.GeneralFunctions function;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         filler = FXCollections.observableArrayList();
-        listPopulator populate = new listPopulator();
-        name.setCellFactory(new PropertyValueFactory("Name"));
-        matric.setCellFactory(new PropertyValueFactory("Matricule"));
-        code.setCellFactory(new PropertyValueFactory("Course_Code"));
-        etTime.setCellFactory(new PropertyValueFactory("End_time"));
-        stTime.setCellFactory(new PropertyValueFactory("Start_time"));
-        state.setCellFactory(new PropertyValueFactory("status"));
-        
-        
-        populate.Course_Code.setValue("lllll");
-        populate.End_time.setValue("22:00");
-        populate.Matricule.setValue("FE11A166");
-        populate.status.setValue("Present");
-        populate.Start_time.setValue("00:00");
-        populate.Name.setValue("Embeded Systems");
-        filler.add(populate);
+        function = new GeneralFunctions();
+        matric.setCellValueFactory(new PropertyValueFactory("Matricule"));
+        code.setCellValueFactory(new PropertyValueFactory("Course_Code"));
+        etTime.setCellValueFactory(new PropertyValueFactory("EndTime"));
+        stTime.setCellValueFactory(new PropertyValueFactory("StartTime"));
+        state.setCellValueFactory(new PropertyValueFactory("Status"));
+        code.setCellValueFactory(new PropertyValueFactory("Name"));
+
         listTable.getItems().addAll(filler);
-        //listTable.getItems().addAll(filler);
-        // TODO
+     
     }
 
     @FXML
     private void getList(ActionEvent event) {
+        Date dateofClass = Date.valueOf(date.getValue());
+        String cCode = this.courseCode.getText();
+        int Class;
+        filler.clear();
+        Class = function.getClassID(cCode, dateofClass);
+        ArrayList matricules = GeneralFunctions.getMatriculeOnAttndancList(cCode, Class);
+        ArrayList registerdMatricules = GeneralFunctions.getClasslist(cCode);
+        String Cours = function.getCourseName(cCode);
+        ArrayList Times = function.getTimes(Class);
+        String status;
+        listTable.setItems(filler);
+        for (int i = 0; i < registerdMatricules.size(); i++) {
+            listPopulator list = new listPopulator();
+            if (matricules.contains(registerdMatricules.get(i))) {
+                status = "present";
+            } else {
+                status = "absent";
+            }
+
+            System.out.println(i + "i" + registerdMatricules.get(i));
+            list.EndTime.set(Times.get(1).toString());
+            list.Matricule.set(registerdMatricules.get(i).toString());
+            list.StartTime.set(Times.get(0).toString());
+            list.Status.set(status);
+            list.Name.set(Cours);
+            filler.add(list);
+        }
+
+        listTable.setItems(filler);
     }
 
     @Override
     public void setScreenParent(ScreensController pane) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @FXML

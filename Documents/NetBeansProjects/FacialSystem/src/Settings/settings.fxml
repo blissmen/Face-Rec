@@ -9,19 +9,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.SettingsController">
+<AnchorPane id="back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="1244.0" stylesheets="@GenStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings.SettingsController">
    <children>
       <Pane layoutX="-6.0" prefHeight="467.0" prefWidth="1310.0">
          <children>
             <Pane layoutX="14.0" prefHeight="467.0" prefWidth="258.0">
                <children>
-                  <Accordion prefHeight="467.0" prefWidth="234.0">
+                  <Accordion layoutX="-11.0" prefHeight="437.0" prefWidth="279.0">
                     <panes>
-                      <TitledPane id="button2" animated="false" blendMode="EXCLUSION" prefHeight="412.0" prefWidth="234.0" stylesheets="@GenStyles.css" text="General Settings" textFill="#a79595">
+                      <TitledPane id="button2" animated="false" blendMode="SCREEN" prefHeight="412.0" prefWidth="234.0" stylesheets="@GenStyles.css" text="General Settings" textFill="#a79595">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #9d7a7a;" stylesheets="@GenStyles.css">
+                          <AnchorPane id="back" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@GenStyles.css">
                                  <children>
-                                    <Button id="button1" mnemonicParsing="false" onAction="#genSet" prefHeight="84.0" prefWidth="254.0" stylesheets="@GenStyles.css" text="General Settings">
+                                    <Button id="button1" mnemonicParsing="false" onAction="#genSet" prefHeight="84.0" prefWidth="270.0" stylesheets="@GenStyles.css" text="General Settings">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -34,7 +34,7 @@
                                           </LinearGradient>
                                        </textFill>
                                     </Button>
-                                    <Button id="button1" layoutY="84.0" mnemonicParsing="false" onAction="#Notifications" prefHeight="84.0" prefWidth="254.0" text="Notification">
+                                    <Button id="button1" layoutY="84.0" mnemonicParsing="false" onAction="#Notifications" prefHeight="84.0" prefWidth="269.0" text="Notification">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -54,11 +54,11 @@
                               <Font size="24.0" />
                            </font>
                       </TitledPane>
-                      <TitledPane id="button2" animated="false" blendMode="EXCLUSION" prefHeight="418.0" prefWidth="310.0" style="-fx-background-color: #a79595;" stylesheets="@GenStyles.css" text="Advanced Settings" textFill="#a79595">
+                      <TitledPane id="button2" animated="false" blendMode="SCREEN" prefHeight="393.0" prefWidth="279.0" style="-fx-background-color: #a79595;" stylesheets="@GenStyles.css" text="Advanced Settings" textFill="#a79595">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #9d7a7a;" stylesheets="@GenStyles.css">
+                          <AnchorPane id="back" minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="275.0" stylesheets="@GenStyles.css">
                                  <children>
-                                    <Button id="button1" layoutX="-5.0" layoutY="3.0" mnemonicParsing="false" onAction="#advancedSets" prefHeight="78.0" prefWidth="261.0" text="Advanced Settings">
+                                    <Button id="button1" layoutX="-5.0" layoutY="3.0" mnemonicParsing="false" onAction="#advancedSets" prefHeight="78.0" prefWidth="279.0" text="Advanced Settings">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -71,7 +71,7 @@
                                           </LinearGradient>
                                        </textFill>
                                     </Button>
-                                    <Button id="button1" layoutX="-1.0" layoutY="81.0" mnemonicParsing="false" onAction="#CameSets" prefHeight="78.0" prefWidth="254.0" text="Video Setings">
+                                    <Button id="button1" layoutX="-1.0" layoutY="81.0" mnemonicParsing="false" onAction="#CameSets" prefHeight="78.0" prefWidth="272.0" text="Video Setings">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -84,7 +84,7 @@
                                           </LinearGradient>
                                        </textFill>
                                     </Button>
-                                    <Button id="button1" layoutX="-1.0" layoutY="159.0" mnemonicParsing="false" onAction="#Connections" prefHeight="78.0" prefWidth="254.0" text="Connection">
+                                    <Button id="button1" layoutX="-1.0" layoutY="159.0" mnemonicParsing="false" onAction="#Connections" prefHeight="78.0" prefWidth="270.0" text="Connection">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -96,6 +96,19 @@
                                              </stops>
                                           </LinearGradient>
                                        </textFill>
+                                    </Button>
+                                    <Button id="button1" layoutX="-1.0" layoutY="237.0" mnemonicParsing="false" onAction="#sysSets" prefHeight="82.0" prefWidth="271.0" text="System Data Settings">
+                                       <textFill>
+                                          <LinearGradient endX="1.0" endY="1.0">
+                                             <stops>
+                                                <Stop color="BLACK" />
+                                                <Stop color="WHITE" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font>
                                     </Button>
                                  </children>
                               </AnchorPane>

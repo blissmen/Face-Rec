@@ -40,8 +40,9 @@ import javafx.scene.image.ImageView;
  *
  * @author USER
  */
-public class Ca_viewController implements Initializable, ControlledScreen, Runnable {
+    public class Ca_viewController implements Initializable, ControlledScreen, Runnable {
 
+   
     @FXML
     private ImageView imagepath;
     private int absoluteFaceSize;
@@ -57,28 +58,39 @@ public class Ca_viewController implements Initializable, ControlledScreen, Runna
     private Mat imFrame;
     private Mat grayFrame;
     private CameraSettings CameraSetup;
-
+    static CameraActivate camera;
     /**
      * Initializes the controller class.
      *
      * @param url
      * @param rb
      */
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.faceCascade = new CascadeClassifier();
         CameraSetup = new CameraSettings();
+        camera=new CameraActivate();
         this.absoluteFaceSize = 20;
         this.checkboxSelection(CameraSetup.getCascadesFile());
 
-        capture_obj = new VideoCapture(CameraSetup.getCamaraID());
-        startCamera();
-
+       
+      // startCamera();
     }
-
+public Ca_viewController() {
+       
+    }
+class CameraActivate
+        {
+        public void ActivateCamer()
+        {
+                    capture_obj = new VideoCapture(CameraSetup.getCamaraID());
+        startCamera();
+        }
+        }
     protected void startCamera() {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        if (!this.cameraActive) {
+        
+       if (!this.cameraActive) {
             this.capture_obj.open(CameraSetup.getCamaraID());
 
             // is the video stream available?
@@ -162,6 +174,7 @@ public class Ca_viewController implements Initializable, ControlledScreen, Runna
         if (facesArray.length > 0) {
             System.out.println("Faces gotten" + facesArray.length);
             this.run();
+            Tick(grayFrame);
         }
 
     }
@@ -237,7 +250,14 @@ public class Ca_viewController implements Initializable, ControlledScreen, Runna
 
     @Override
     public void run() {
-        Tick(grayFrame);
+        if ("ended".equals(Class.STATUS)) {
+          
+            CamStream.cancel();
+            timer = null;
+            timer.cancel();
+            frame = null;
+            capture_obj.release();
+        }
     }
 
 }

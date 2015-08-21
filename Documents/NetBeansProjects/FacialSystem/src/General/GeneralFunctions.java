@@ -5,6 +5,7 @@
  */
 package General;
 
+import facialsystem.TeacherInfoController;
 import facialsystem.User;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -57,17 +58,18 @@ public class GeneralFunctions {
             User.setQualification(re.get(3).toString());
             User.setSpeciality(re.get(4).toString());
             User.setTelephone(re.get(5).toString());
-            query = "select Course_Course_ID from account_has_course where Account_Matricule='" + name + "'";
+            query = "select Course_Code from lecturer_has_course where Lecturer_Account_Matricule='" + name + "'";
             ArrayList Courses = database.ExecuteQuery(query);
             User.setCourses(Courses);
         } catch (SQLException ex) {
-            Logger.getLogger(GeneralFunctions.class.getName()).log(Level.SEVERE, null, ex);
+         //   Logger.getLogger(GeneralFunctions.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Logger Not a lecturer");
         }
 
     }
 
     public static void getCourseClassID(String text) {
-        query = "select ID from `class registration` where Course_ID='" + text + "'";
+        query = "select ID from `class registration` where Course_Code='" + text + "'";
         try {
             ArrayList rey = database.ExecuteQuery(query);
             User.setClasID(Integer.parseInt(rey.get(0).toString()) + 1);
@@ -80,7 +82,7 @@ public class GeneralFunctions {
     private String Coursename;
 
     public String getCourseName(String text) {
-        query = "select Course_Name from course where Code'" + text + "'";
+        query = "select Course_Name from course where Code ='" + text + "'";
         try {
             ArrayList rey = database.ExecuteQuery(query);
             User.setCurrentCourse(rey.get(0).toString());
@@ -101,14 +103,18 @@ public class GeneralFunctions {
             if (mat.length() > 6) {
                 mat = mat.substring(0, (mat.length() - 6));
 
-                query = "insert into attendacelist(Account_Matricule,Course_ID,`Class_ID`) values ('" + mat + ""
-                        + "','" + User.getCurrentCourse() + ""
+                query = "insert into attendancelist(Account_Matricule,Course_Code,Class_ID) values ('" + mat + ""
+                        + "','" + TeacherInfoController.cl.getCOURSE() + ""
                         + "'," + User.getClasID() + ")";
                 try {
                     database.Query(query);
                 } catch (Exception ds) {
-                    System.out.println(mat + " Already Ticked Present");
+                         System.out.println(mat + " Already Ticked Present");
+            
                 }
+            }
+            else{
+                System.out.println("Error in value gotten for matricule "+mat);
             }
         }
     }
@@ -120,7 +126,8 @@ public class GeneralFunctions {
             result = database.ExecuteQuery(query);
         } catch (Exception sd) {
             System.out.println("No Student registred for d course");
-
+            Dialogs.create().message("No Student registred for this course").showInformation();
+       
         }
         return result;
     }
@@ -128,10 +135,12 @@ public class GeneralFunctions {
     public static ArrayList getMatriculeOnAttndancList(String course, int clasId) {
         query = " select  Account_Matricule from attendancelist where Course_Code='" + course + "' and Class_ID=" + clasId;
         try {
+            System.out.println(query);
             result = database.ExecuteQuery(query);
+            System.out.println(" this are"+result.get(0));
         } catch (Exception sd) {
             System.out.println("No Student registred for d course");
-
+           Dialogs.create().message("No Student was available for this course").showError();
         }
         return result;
     }
@@ -143,8 +152,10 @@ public class GeneralFunctions {
             ClassID = Integer.valueOf(result.get(0).toString());
         } catch (Exception sd) {
             System.out.println("the specified Class did not hold on this Date");
-
+            Dialogs.create().message("No Records of this Class Exist Ensure the date is correct Likewise Course Code").showError();
+            
         }
+        
         return ClassID;
     }
     
@@ -154,7 +165,8 @@ public class GeneralFunctions {
         try {
             result = database.ExecuteQuery(query);
         } catch (SQLException ex) {
-            System.out.println("Class doesnt Exist");    
+            System.out.println("Class doesnt Exist");
+            Dialogs.create().message("No Class took place on that Date").showError();
         }
     return result;
     }
